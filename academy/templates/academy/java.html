@@ -1,0 +1,1019 @@
+{% extends "academy/base.html" %}
+{% load static %}
+
+{% block title %}Java Programming | AlphaStack Academy{% endblock %}
+
+{% block content %}
+<style>
+    /* =====================================================
+   JAVA COURSE PAGE
+===================================================== */
+
+.java-course-page {
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(35, 110, 255, 0.12),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 60%,
+            rgba(120, 80, 255, 0.10),
+            transparent 30%
+        ),
+        #061A3A;
+
+    color: #fff;
+    padding: 75px 0;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.java-hero {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+
+    align-items: center;
+    gap: 35px;
+
+    padding: 50px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0B2B60,
+            #123D7A
+        );
+
+    border: 1px solid rgba(255,255,255,0.10);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.25);
+}
+
+.course-hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}   
+
+@media (max-width: 480px) {
+
+    .course-hero h1 {
+        font-size: 32px;
+    }
+
+    .course-hero-buttons {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .course-hero-buttons a {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .program-card {
+        padding: 22px;
+    }
+
+    .syllabus-card {
+        padding: 22px;
+    }
+
+    .project-icon {
+        width: 70px;
+        height: 70px;
+
+        font-size: 35px;
+    }
+
+}
+
+
+.java-hero-icon {
+    width: 110px;
+    height: 110px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff0df,
+            #ffc98f
+        );
+
+    font-size: 60px;
+}
+
+.course-badge,
+.section-label {
+    color: #63A0FF;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 0.16em;
+}
+
+.java-hero h1 {
+    margin: 12px 0;
+
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.05;
+}
+
+.java-hero h1 span {
+    display: block;
+
+    background:
+        linear-gradient(
+            90deg,
+            #4D91FF,
+            #8B6CFF
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.java-hero p {
+    max-width: 750px;
+
+    color: #C5D5F2;
+
+    font-size: 17px;
+    line-height: 1.8;
+
+    margin-bottom: 25px;
+}
+
+
+/* =====================================================
+   COURSE DETAILS
+===================================================== */
+
+.java-details {
+    display: grid;
+
+    grid-template-columns: 1.5fr 0.8fr;
+
+    gap: 30px;
+
+    padding: 80px 0 50px;
+}
+
+.details-content h2 {
+    margin: 12px 0 15px;
+
+    font-size: 40px;
+}
+
+.details-content > p {
+    max-width: 700px;
+
+    color: #B8C7E6;
+
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   HIGHLIGHTS
+===================================================== */
+
+.course-highlights {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 14px;
+
+    margin-top: 30px;
+}
+
+.course-highlights div {
+    padding: 16px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,0.055);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    color: #D9E5FA;
+
+    font-size: 13px;
+}
+
+.course-highlights span {
+    color: #55A0FF;
+
+    font-weight: 900;
+
+    margin-right: 7px;
+}
+
+
+/* =====================================================
+   PROGRAM DETAILS
+===================================================== */
+
+.program-details {
+    padding: 30px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.08),
+            rgba(255,255,255,0.035)
+        );
+
+    border: 1px solid rgba(255,255,255,0.10);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.15);
+}
+
+.program-details h3 {
+    margin: 10px 0 25px;
+
+    font-size: 24px;
+}
+
+.detail-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 14px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.07);
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-item > span {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(55,135,255,0.12);
+
+    font-size: 19px;
+}
+
+.detail-item strong {
+    font-size: 13px;
+
+    color: #8DB9FF;
+}
+
+.detail-item p {
+    margin: 3px 0 0;
+
+    color: #E1E9F8;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   SYLLABUS
+===================================================== */
+
+.java-syllabus {
+    padding: 60px 0;
+}
+
+.syllabus-heading {
+    max-width: 750px;
+
+    margin-bottom: 40px;
+}
+
+.syllabus-heading h2 {
+    margin: 12px 0;
+
+    font-size: 42px;
+}
+
+.syllabus-heading p {
+    color: #B8C7E6;
+
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   WEEK CARDS
+===================================================== */
+
+.syllabus-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 22px;
+}
+
+.week-card {
+    position: relative;
+
+    padding: 30px;
+
+    min-height: 300px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255,255,255,0.055);
+
+    border: 1px solid rgba(255,255,255,0.09);
+
+    overflow: hidden;
+
+    transition: 0.3s ease;
+}
+
+.week-card:last-child {
+    grid-column: span 2;
+}
+
+.week-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.20);
+}
+
+.week-top {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.week-number {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    font-weight: 900;
+}
+
+.week-label {
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.12em;
+
+    color: #8DB9FF;
+}
+
+.week-card h3 {
+    margin: 0 0 12px;
+
+    font-size: 24px;
+}
+
+.week-card > p {
+    margin: 0;
+
+    color: #B8C7E6;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   TOPIC TAGS
+===================================================== */
+
+.topic-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 25px;
+}
+
+.topic-list span {
+    padding: 7px 11px;
+
+    border-radius: 7px;
+
+    background:
+        rgba(255,255,255,0.07);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    color: #D5E1F5;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   WEEK COLORS
+===================================================== */
+
+.week-blue {
+    border-top: 3px solid #3D8BFF;
+}
+
+.week-purple {
+    border-top: 3px solid #8B6CFF;
+}
+
+.week-cyan {
+    border-top: 3px solid #28C7D9;
+}
+
+.week-orange {
+    border-top: 3px solid #FF9D42;
+}
+
+.week-green {
+    border-top: 3px solid #43D17A;
+}
+
+
+/* =====================================================
+   FINAL CTA
+===================================================== */
+
+.java-cta {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-top: 60px;
+
+    padding: 42px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1769FF,
+            #7657FF
+        );
+
+    box-shadow:
+        0 20px 50px rgba(23,105,255,0.20);
+}
+
+.java-cta h2 {
+    margin: 10px 0;
+
+    font-size: 32px;
+}
+
+.java-cta p {
+    margin: 0;
+
+    color: #E7EEFF;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 850px) {
+
+    .java-hero {
+        grid-template-columns: 1fr;
+
+        padding: 40px;
+    }
+
+    .java-details {
+        grid-template-columns: 1fr;
+    }
+
+    .syllabus-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .week-card:last-child {
+        grid-column: span 1;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .java-course-page {
+        padding: 50px 0;
+    }
+
+    .java-hero {
+        padding: 30px 22px;
+    }
+
+    .java-hero-icon {
+        width: 85px;
+        height: 85px;
+
+        font-size: 45px;
+    }
+
+    .course-highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .java-cta {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 30px 25px;
+    }
+}
+/* =====================================================
+   FIX TEXT VISIBILITY - JAVA COURSE PAGE
+===================================================== */
+
+.java-course-page {
+    color: #ffffff;
+}
+
+/* Course overview heading */
+.details-content h2 {
+    color: #ffffff !important;
+}
+
+/* Course overview paragraph */
+.details-content > p {
+    color: #c7d7f5 !important;
+}
+
+/* Program details heading */
+.program-details h3 {
+    color: #ffffff !important;
+}
+
+/* Detail labels */
+.detail-item strong {
+    color: #8db9ff !important;
+}
+
+/* Detail values */
+.detail-item p {
+    color: #f1f5ff !important;
+}
+
+/* Syllabus heading */
+.syllabus-heading h2 {
+    color: #ffffff !important;
+}
+
+.syllabus-heading p {
+    color: #c7d7f5 !important;
+}
+
+/* Week card headings */
+.week-card h3 {
+    color: #ffffff !important;
+}
+
+/* Week card descriptions */
+.week-card > p {
+    color: #c7d7f5 !important;
+}
+
+/* Topic tags */
+.topic-list span {
+    color: #e7efff !important;
+}
+
+/* Course highlights */
+.course-highlights div {
+    color: #e7efff !important;
+}
+
+/* Hero heading */
+.java-hero h1 {
+    color: #ffffff !important;
+}
+
+/* Hero description */
+.java-hero p {
+    color: #d4e1f7 !important;
+}
+
+/* Labels */
+.section-label,
+.course-badge {
+    color: #65a3ff !important;
+}
+html {
+    scroll-behavior: smooth;
+}
+.event-icon {
+    width: 140px;
+    height: 140px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(112, 150, 255, 0.20);
+
+    box-shadow:
+        0 10px 30px rgba(37, 99, 235, 0.15);
+
+    animation: iconFloat 3s ease-in-out infinite;
+
+    transition: all 0.35s ease;
+}
+
+.event-icon img {
+    width: 100px;
+    height: 100px;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+.event-card:hover .event-icon {
+    transform: scale(1.08) rotate(-4deg);
+
+    box-shadow:
+        0 15px 40px rgba(37, 99, 235, 0.30);
+}
+</style>
+
+<section class="java-course-page">
+
+    <div class="container">
+
+        <!-- HERO -->
+        <div class="java-hero">
+
+            <div class="event-icon">
+                <img src="{% static 'academy/images/java-logo.png' %}"
+                    alt="java">
+            </div>
+
+            <div class="java-hero-content">
+
+                <span class="course-badge">
+                    JAVA PROGRAMMING
+                </span>
+
+                <h1>
+                    Java Training &
+                    <span>Certification Program</span>
+                </h1>
+
+                <p>
+                    Build strong Java programming skills through
+                    structured learning, practical exercises,
+                    coding practice and assignments.
+                </p>
+
+                <div class="course-hero-buttons">
+                        <a
+                        class="btn btn-outline-light"
+                        href="#syllabus"
+                        >
+                        View Syllabus →
+                    </a>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- COURSE DETAILS -->
+        <section class="java-details">
+
+            <div class="details-content">
+
+                <span class="section-label">
+                    COURSE OVERVIEW
+                </span>
+
+                <h2>
+                    Learn Java Step by Step
+                </h2>
+
+                <p>
+                    A structured Java programming program designed
+                    to help learners build strong fundamentals,
+                    improve problem-solving skills and gain
+                    practical coding experience.
+                </p>
+
+                <div class="course-highlights">
+
+                    <div>
+                        <span>✓</span>
+                        Theory & Practical Learning
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Hands-On Coding Practice
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Assignments & Exercises
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Course Completion Certificate
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="program-details">
+
+                <span class="section-label">
+                    PROGRAM DETAILS
+                </span>
+
+                <h3>
+                    Java Programming
+                </h3>
+
+                <div class="detail-item">
+                    <span>📚</span>
+                    <div>
+                        <strong>Duration</strong>
+                        <p>5 Weeks</p>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <span>💻</span>
+                    <div>
+                        <strong>Mode</strong>
+                        <p>Online</p>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <span>🌐</span>
+                    <div>
+                        <strong>Language</strong>
+                        <p>Tamil & English</p>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <span>🏆</span>
+                    <div>
+                        <strong>Certificate</strong>
+                        <p>Course Completion Certificate</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SYLLABUS -->
+        <section class="java-syllabus"  id="syllabus">
+
+            <div class="syllabus-heading">
+
+                <span class="section-label">
+                    JAVA SYLLABUS
+                </span>
+
+                <h2>
+                    What You'll Learn
+                </h2>
+
+                <p>
+                    A five-week structured learning journey covering
+                    Java fundamentals, OOP, collections and practical
+                    project development.
+                </p>
+
+            </div>
+
+
+            <div class="syllabus-grid">
+
+
+                <!-- WEEK 1 -->
+                <article class="week-card week-blue">
+
+                    <div class="week-top">
+                        <span class="week-number">01</span>
+                        <span class="week-label">WEEK 1</span>
+                    </div>
+
+                    <h3>
+                        Java Fundamentals
+                    </h3>
+
+                    <p>
+                        Build a strong foundation in Java programming
+                        and understand the core concepts.
+                    </p>
+
+                    <div class="topic-list">
+                        <span>Java Basics</span>
+                        <span>Variables & Data Types</span>
+                        <span>Operators</span>
+                        <span>Input & Output</span>
+                        <span>Basic Problem Solving</span>
+                    </div>
+
+                </article>
+
+
+                <!-- WEEK 2 -->
+                <article class="week-card week-purple">
+
+                    <div class="week-top">
+                        <span class="week-number">02</span>
+                        <span class="week-label">WEEK 2</span>
+                    </div>
+
+                    <h3>
+                        Control Statements & Arrays
+                    </h3>
+
+                    <p>
+                        Learn to control program flow and work with
+                        arrays through coding exercises.
+                    </p>
+
+                    <div class="topic-list">
+                        <span>Conditional Statements</span>
+                        <span>Switch</span>
+                        <span>Loops</span>
+                        <span>Arrays</span>
+                        <span>Logic Building</span>
+                    </div>
+
+                </article>
+
+
+                <!-- WEEK 3 -->
+                <article class="week-card week-cyan">
+
+                    <div class="week-top">
+                        <span class="week-number">03</span>
+                        <span class="week-label">WEEK 3</span>
+                    </div>
+
+                    <h3>
+                        Methods & OOP
+                    </h3>
+
+                    <p>
+                        Understand object-oriented programming and
+                        learn how Java applications are structured.
+                    </p>
+
+                    <div class="topic-list">
+                        <span>Methods</span>
+                        <span>Classes & Objects</span>
+                        <span>Constructors</span>
+                        <span>Encapsulation</span>
+                        <span>Inheritance</span>
+                    </div>
+
+                </article>
+
+
+                <!-- WEEK 4 -->
+                <article class="week-card week-orange">
+
+                    <div class="week-top">
+                        <span class="week-number">04</span>
+                        <span class="week-label">WEEK 4</span>
+                    </div>
+
+                    <h3>
+                        Advanced OOP & Collections
+                    </h3>
+
+                    <p>
+                        Explore advanced Java concepts and work with
+                        commonly used collection classes.
+                    </p>
+
+                    <div class="topic-list">
+                        <span>Polymorphism</span>
+                        <span>Abstraction</span>
+                        <span>Interfaces</span>
+                        <span>Exception Handling</span>
+                        <span>Collections</span>
+                    </div>
+
+                </article>
+
+
+                <!-- WEEK 5 -->
+                <article class="week-card week-green">
+
+                    <div class="week-top">
+                        <span class="week-number">05</span>
+                        <span class="week-label">WEEK 5</span>
+                    </div>
+
+                    <h3>
+                        Core Java Practice & Mini Project
+                    </h3>
+
+                    <p>
+                        Apply your Java knowledge through coding
+                        practice, project development and assessment.
+                    </p>
+
+                    <div class="topic-list">
+                        <span>Strings & File Handling</span>
+                        <span>Packages & Debugging</span>
+                        <span>Coding Practice</span>
+                        <span>Mini Project</span>
+                        <span>Final Assessment</span>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+</section>
+
+{% endblock %}
