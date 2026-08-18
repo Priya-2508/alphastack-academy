@@ -8,213 +8,285 @@
     <meta name="description" content="AlphaStack Academy - Java and Python programming training.">
     <link rel="stylesheet" href="{% static 'academy/css/style.css' %}">
     {% block extra_css %}{% endblock %}
-
 <style>
-/* =====================================================
-   ALPHASTACK NAVBAR
-   WHITE TOP BAR + LOGO AT LEFT
-===================================================== */
+
+/* =========================================================
+   ALPHASTACK - HEADER / NAVBAR
+   DO NOT CHANGE HTML
+========================================================= */
 
 .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-
+    width: 100%;
     background: #ffffff;
-    border-bottom: 1px solid #e5eaf2;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid #e3eaf5;
+    position: relative;
+    z-index: 1000;
+    box-shadow: 0 4px 18px rgba(6, 32, 77, 0.06);
 }
 
-
-/* =====================================================
-   NAVIGATION WRAPPER
-===================================================== */
-
 .nav-wrap {
-    width: 100%;
-    max-width: none !important;
-
+    min-height: 78px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    margin: 0 !important;
-    padding: 0 30px 0 15px;
+    gap: 30px;
 }
 
-
-/* =====================================================
-   LOGO
-===================================================== */
+/* Logo */
 
 .brand {
     display: flex;
     align-items: center;
-
-    background: #ffffff;
-
-    padding: 4px 10px;
-    border-radius: 6px;
-
-    margin: 0;
+    flex-shrink: 0;
 }
 
 .brand img {
-    width: 190px;
+    width: 170px;
     height: auto;
+    max-height: 58px;
+    object-fit: contain;
     display: block;
+    transition: transform 0.3s ease;
+}
+
+.brand:hover img {
+    transform: scale(1.03);
 }
 
 
-/* =====================================================
-   NAVIGATION LINKS
-===================================================== */
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
 .main-nav {
     display: flex;
     align-items: center;
-    gap: 25px;
-
-    font-size: 14px;
-    font-weight: 700;
+    justify-content: flex-end;
+    gap: 6px;
 }
 
 .main-nav a {
-    color: #102a56;
-    text-decoration: none;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 14px;
 
-    transition: color 0.2s ease;
+    color: #14213d;
+    font-size: 15px;
+    font-weight: 700;
+
+    border-radius: 9px;
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.main-nav a::after {
+    content: "";
+
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 4px;
+
+    height: 2px;
+
+    background: #155eef;
+
+    transform: scaleX(0);
+    transform-origin: center;
+
+    transition: transform 0.25s ease;
 }
 
 .main-nav a:hover {
-    color: #2563eb;
+    color: #155eef;
+    background: #f5f8ff;
+    transform: translateY(-1px);
+}
+
+.main-nav a:hover::after {
+    transform: scaleX(1);
 }
 
 
-/* =====================================================
-   REGISTER / CTA BUTTON
-===================================================== */
-
-.main-nav .nav-cta {
-    background: linear-gradient(135deg, #1769ff, #7657ff);
-    color: #ffffff !important;
-
-    padding: 9px 17px !important;
-    border-radius: 8px;
-
-    box-shadow: 0 5px 15px rgba(23, 105, 255, 0.25);
-}
-
-
-/* =====================================================
-   MOBILE MENU BUTTON
-===================================================== */
+/* =========================================================
+   MENU BUTTON
+========================================================= */
 
 .menu-toggle {
     display: none;
 
-    border: none;
-    background: transparent;
+    width: 42px;
+    height: 42px;
 
-    color: #102a56;
-    font-size: 24px;
+    border: 1px solid #dbe5f5;
+    border-radius: 10px;
 
+    background: #ffffff;
+    color: #06204d;
+
+    font-size: 21px;
     cursor: pointer;
+
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.menu-toggle:hover {
+    background: #eaf2ff;
+    color: #155eef;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 15px rgba(6, 32, 77, 0.10);
 }
 
 
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 900px) {
-
-    .nav-wrap {
-        padding: 0 15px;
-    }
-
-    .brand img {
-        width: 150px;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .main-nav {
-        display: none;
-
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-
-        background: #ffffff;
-
-        padding: 12px 5%;
-
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-
-        border-bottom: 1px solid #e5eaf2;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    }
-
-    .main-nav.show {
-        display: flex;
-    }
-
-    .main-nav a {
-        padding: 12px 0;
-        color: #102a56 !important;
-    }
-
-    .main-nav .nav-cta {
-        text-align: center;
-        margin-top: 5px;
-    }
-}
 /* =========================================================
-   ALPHASTACK FOOTER
+   GENERAL WHITE PAGE
+========================================================= */
+
+body {
+    background: #ffffff !important;
+    color: #14213d;
+}
+
+main {
+    background: #ffffff;
+    min-height: 400px;
+}
+
+
+/* =========================================================
+   COMMON SECTION IMPROVEMENT
+========================================================= */
+
+.section {
+    background: #ffffff;
+}
+
+.light-section {
+    background: #f7faff;
+}
+
+.section-head h2,
+.section-head h3 {
+    color: #06204d;
+}
+
+.section-head p {
+    color: #667085;
+}
+
+
+/* =========================================================
+   COMMON CARDS
+========================================================= */
+
+.feature-card,
+.course-card,
+.benefit-card,
+.contact-card,
+.registration-form,
+.about-box {
+    background: #ffffff;
+
+    border: 1px solid #e1e9f6;
+
+    box-shadow:
+        0 8px 25px rgba(6, 32, 77, 0.06);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.feature-card:hover,
+.course-card:hover,
+.benefit-card:hover,
+.contact-card:hover,
+.about-box:hover {
+    transform: translateY(-5px);
+
+    border-color: #b8cef2;
+
+    box-shadow:
+        0 18px 40px rgba(6, 32, 77, 0.11);
+}
+
+
+/* =========================================================
+   BUTTON ANIMATION
+========================================================= */
+
+.btn {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary:hover {
+    box-shadow:
+        0 10px 24px rgba(21, 94, 239, 0.22);
+}
+
+
+/* =========================================================
+   FOOTER
 ========================================================= */
 
 .site-footer {
     position: relative;
-    background:
-        radial-gradient(
-            circle at 10% 20%,
-            rgba(37, 99, 235, 0.10),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 90% 80%,
-            rgba(112, 72, 232, 0.10),
-            transparent 30%
-        ),
-        #061936;
 
-    color: #d8e5fa;
-    border-top: 1px solid rgba(91, 145, 255, 0.15);
+    background:
+        linear-gradient(
+            135deg,
+            #06204d 0%,
+            #0a2d68 55%,
+            #123d91 100%
+        );
+
+    color: #dce7ff;
+
+    padding: 55px 0 0;
+
     overflow: hidden;
 }
 
 
-/* Decorative glow */
+/* Decorative footer glow */
 
 .site-footer::before {
     content: "";
+
     position: absolute;
 
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
+
+    right: -120px;
+    top: -140px;
 
     border-radius: 50%;
 
-    border: 1px solid rgba(91, 145, 255, 0.08);
+    background: rgba(21, 94, 239, 0.12);
 
-    top: -180px;
-    right: -100px;
+    pointer-events: none;
 }
 
 .site-footer::after {
@@ -222,15 +294,17 @@
 
     position: absolute;
 
-    width: 250px;
-    height: 250px;
+    width: 220px;
+    height: 220px;
+
+    left: -120px;
+    bottom: -130px;
 
     border-radius: 50%;
 
-    border: 1px solid rgba(112, 72, 232, 0.08);
+    background: rgba(255, 255, 255, 0.04);
 
-    bottom: -160px;
-    left: -100px;
+    pointer-events: none;
 }
 
 
@@ -240,110 +314,103 @@
 
 .footer-grid {
     position: relative;
-    z-index: 2;
+    z-index: 1;
 
     display: grid;
 
     grid-template-columns:
-        1.5fr
+        1.4fr
         1fr
-        1.2fr
-        1.3fr;
+        1fr
+        1.2fr;
 
-    gap: 55px;
+    gap: 45px;
 
-    padding: 70px 0 50px;
+    padding-bottom: 42px;
 }
 
 
 /* =========================================================
-   BRAND
+   FOOTER BRAND
 ========================================================= */
 
 .footer-brand {
     max-width: 320px;
 }
 
-
-/* Logo */
-
 .footer-logo-box {
     display: inline-flex;
 
     align-items: center;
-    justify-content: center;
+
+    margin-bottom: 15px;
+
+    padding: 7px 10px;
 
     background: #ffffff;
 
-    padding: 8px 14px;
-
     border-radius: 10px;
 
-    margin-bottom: 20px;
-
-    transition: 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .footer-logo-box:hover {
     transform: translateY(-3px);
 
     box-shadow:
-        0 10px 30px rgba(37, 99, 235, 0.20);
+        0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .footer-logo-box img {
-    display: block;
-
     width: 180px;
-
     height: auto;
+    max-height: 65px;
+    object-fit: contain;
+    display: block;
 }
-
-
-/* Tagline */
 
 .footer-tagline {
-    color: #70a2ff;
+    color: #ffffff !important;
 
-    font-size: 18px;
+    font-size: 15px;
 
-    font-weight: 700;
+    font-weight: 800;
 
-    margin: 0 0 10px;
+    margin: 4px 0 8px;
 }
 
-
 .footer-description {
-    color: #9eb4d5;
+    color: #bfcdea !important;
 
     font-size: 14px;
 
-    line-height: 1.8;
+    line-height: 1.7;
 
     margin: 0;
 }
 
 
 /* =========================================================
-   FOOTER COLUMNS
+   FOOTER HEADINGS
 ========================================================= */
 
-.footer-column h4 {
+.site-footer h4 {
+    color: #ffffff !important;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    margin: 5px 0 18px;
+
     position: relative;
 
-    color: #ffffff;
-
-    font-size: 17px;
-
-    margin: 5px 0 22px;
-
-    padding-bottom: 12px;
+    padding-bottom: 9px;
 }
 
-
-/* Heading underline */
-
-.footer-column h4::after {
+.site-footer h4::after {
     content: "";
 
     position: absolute;
@@ -351,243 +418,120 @@
     left: 0;
     bottom: 0;
 
-    width: 35px;
+    width: 32px;
     height: 2px;
 
-    border-radius: 5px;
+    background: #4f8cff;
 
-    background: linear-gradient(
-        90deg,
-        #3d8cff,
-        #7657ff
-    );
+    border-radius: 10px;
 }
 
 
-/* Links */
+/* =========================================================
+   FOOTER LINKS
+========================================================= */
 
-.footer-column > a {
+.footer-column a {
     display: block;
 
-    color: #a9bfdf;
-
-    text-decoration: none;
+    color: #c7d5f3 !important;
 
     font-size: 14px;
 
-    margin-bottom: 14px;
+    margin: 10px 0;
 
-    transition: 0.25s ease;
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
 }
 
-.footer-column > a span {
-    display: inline-block;
-
-    width: 22px;
-
-    color: #5b9cff;
-
-    transition: 0.25s ease;
-}
-
-.footer-column > a:hover {
-    color: #ffffff;
+.footer-column a:hover {
+    color: #ffffff !important;
 
     transform: translateX(5px);
 }
 
-.footer-column > a:hover span {
-    color: #8c78ff;
+.footer-column a span {
+    color: #5d94ff;
+
+    margin-right: 5px;
+
+    transition: margin-right 0.25s ease;
+}
+
+.footer-column a:hover span {
+    margin-right: 9px;
 }
 
 
 /* =========================================================
-   COURSE NOTE
-========================================================= */
-
-.footer-course-note {
-    margin-top: 20px;
-
-    padding: 12px 15px;
-
-    border-radius: 10px;
-
-    background: rgba(37, 99, 235, 0.08);
-
-    border: 1px solid rgba(91, 145, 255, 0.12);
-
-    color: #7895bd;
-
-    font-size: 12px;
-}
-
-
-/* =========================================================
-   CONTACT
+   FOOTER CONTACT
 ========================================================= */
 
 .footer-contact-item {
     display: flex;
 
-    align-items: center;
+    align-items: flex-start;
 
-    gap: 13px;
+    gap: 12px;
 
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
-
 .footer-icon {
-    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
 
-    width: 42px;
-    height: 42px;
+    flex-shrink: 0;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.09);
 
-    background: linear-gradient(
-        135deg,
-        #2563eb,
-        #7048e8
-    );
+    border: 1px solid rgba(255, 255, 255, 0.10);
 
-    font-size: 18px;
+    border-radius: 10px;
 
-    box-shadow:
-        0 8px 20px rgba(37, 99, 235, 0.18);
+    font-size: 16px;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
 }
 
+.footer-contact-item:hover .footer-icon {
+    transform: translateY(-3px);
+
+    background: rgba(21, 94, 239, 0.35);
+}
 
 .footer-contact-item small {
     display: block;
 
-    color: #718bb0;
+    color: #8fa8d3;
 
     font-size: 11px;
 
-    margin-bottom: 3px;
+    font-weight: 700;
 
-    text-transform: uppercase;
-
-    letter-spacing: 1px;
+    margin-bottom: 2px;
 }
 
-
-.footer-contact-item a,
-.footer-contact-item p {
+.footer-contact-item a {
     display: block;
 
-    color: #d7e5fa;
+    color: #ffffff !important;
 
-    text-decoration: none;
+    font-size: 13px;
 
-    font-size: 14px;
-
-    margin: 0;
-
-    line-height: 1.5;
+    transition: color 0.25s ease;
 }
 
 .footer-contact-item a:hover {
-    color: #70a2ff;
-}
-
-
-/* =========================================================
-   FOOTER CTA
-========================================================= */
-
-.footer-cta {
-    position: relative;
-    z-index: 2;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 25px;
-
-    padding: 25px 30px;
-
-    margin-bottom: 35px;
-
-    border-radius: 16px;
-
-    background:
-        linear-gradient(
-            110deg,
-            rgba(37, 99, 235, 0.16),
-            rgba(112, 72, 232, 0.16)
-        );
-
-    border: 1px solid rgba(91, 145, 255, 0.18);
-}
-
-
-.footer-cta strong {
-    display: block;
-
-    color: #ffffff;
-
-    font-size: 17px;
-
-    margin-bottom: 5px;
-}
-
-
-.footer-cta p {
-    color: #91a9cb;
-
-    font-size: 13px;
-
-    margin: 0;
-}
-
-
-/* CTA button */
-
-.footer-cta-btn {
-    flex-shrink: 0;
-
-    display: inline-block;
-
-    padding: 11px 20px;
-
-    border-radius: 9px;
-
-    background: linear-gradient(
-        135deg,
-        #1769ff,
-        #7657ff
-    );
-
-    color: #ffffff;
-
-    text-decoration: none;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    box-shadow:
-        0 8px 20px rgba(37, 99, 235, 0.25);
-
-    transition: 0.25s ease;
-}
-
-
-.footer-cta-btn:hover {
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 12px 28px rgba(37, 99, 235, 0.35);
+    color: #75a5ff !important;
 }
 
 
@@ -597,53 +541,178 @@
 
 .footer-bottom {
     position: relative;
-    z-index: 2;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;   /* Centers the content horizontally */
+    z-index: 1;
 
-    width: 100%;
+    border-top:
+        1px solid rgba(255, 255, 255, 0.12);
 
-    padding: 22px 0;
-
-    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 18px 0;
 }
 
 .footer-bottom p {
-    color: #7188aa;
-    font-size: 12px;
+    color: #aebfdf !important;
+
+    font-size: 13px;
+
     margin: 0;
-    text-align: center;
 }
 
 .footer-bottom strong {
-    color: #a9c4ec;
+    color: #ffffff;
 }
 
+
 /* =========================================================
-   RESPONSIVE
+   SIMPLE PAGE ANIMATION
 ========================================================= */
 
-@media (max-width: 1000px) {
+.hero,
+.page-hero,
+.section,
+.java-course-page {
+    animation: pageFadeIn 0.6s ease both;
+}
 
-    .footer-grid {
-        grid-template-columns: 1fr 1fr;
+@keyframes pageFadeIn {
 
-        gap: 40px;
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 
 }
 
 
-@media (max-width: 650px) {
+/* =========================================================
+   IMAGE ANIMATION
+========================================================= */
+
+.hero-event-card img,
+.event-banner img,
+.event-poster-wrap img {
+    transition:
+        transform 0.4s ease;
+}
+
+.hero-event-card:hover img,
+.event-banner:hover img,
+.event-poster-wrap:hover img {
+    transform: scale(1.015);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .nav-wrap {
+        min-height: 72px;
+    }
+
+    .brand img {
+        width: 160px;
+        max-height: 55px;
+    }
+
+    .menu-toggle {
+        display: inline-flex;
+    }
+
+    .main-nav {
+        display: none;
+
+        position: absolute;
+
+        top: 72px;
+        left: 0;
+        right: 0;
+
+        width: 100%;
+
+        background: #ffffff;
+
+        padding: 14px 5% 18px;
+
+        border-top: 1px solid #e3eaf5;
+        border-bottom: 1px solid #dbe5f5;
+
+        box-shadow:
+            0 15px 30px rgba(6, 32, 77, 0.10);
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 4px;
+
+        animation: menuSlide 0.25s ease;
+    }
+
+    .main-nav.show {
+        display: flex;
+    }
+
+    .main-nav a {
+        width: 100%;
+
+        padding: 12px 14px;
+
+        justify-content: flex-start;
+    }
+
+    .main-nav a::after {
+        display: none;
+    }
+
+    .main-nav a:hover {
+        transform: translateX(4px);
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 35px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .nav-wrap {
+        min-height: 68px;
+    }
+
+    .brand img {
+        width: 145px;
+        max-height: 50px;
+    }
+
+    .menu-toggle {
+        width: 40px;
+        height: 40px;
+    }
+
+    .main-nav {
+        top: 68px;
+    }
 
     .footer-grid {
         grid-template-columns: 1fr;
 
-        gap: 35px;
-
-        padding: 50px 0 35px;
+        gap: 30px;
     }
 
     .footer-brand {
@@ -654,26 +723,45 @@
         width: 165px;
     }
 
-    .footer-cta {
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        padding: 22px;
+    .site-footer {
+        padding-top: 45px;
     }
 
-    .footer-cta-btn {
-        width: 100%;
+}
 
-        text-align: center;
+
+/* =========================================================
+   MENU ANIMATION
+========================================================= */
+
+@keyframes menuSlide {
+
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
     }
 
-    .footer-bottom {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        gap: 8px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 
 }

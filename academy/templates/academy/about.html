@@ -4,19 +4,19 @@
 {% block title %}About Us | AlphaStack Academy{% endblock %}
 
 {% block content %}
-
 <style>
-
-/* =========================================================
-   ALPHASTACK ACADEMY - ABOUT PAGE
-   DARK BLUE / PURPLE THEME
-========================================================= */
+html {
+    scroll-behavior: smooth;
+}
 
 .about-page {
-    width: 100%;
-    background: #061936;
-    color: #ffffff;
+    position: relative;
     overflow: hidden;
+    background:
+        radial-gradient(circle at 0% 0%, rgba(21, 94, 239, 0.07), transparent 25%),
+        radial-gradient(circle at 100% 60%, rgba(118, 87, 255, 0.07), transparent 25%),
+        #ffffff;
+    color: #06204d;
 }
 
 .about-page *,
@@ -27,146 +27,38 @@
 
 
 /* =========================================================
-   HERO
-========================================================= */
-
-.about-hero {
-    position: relative;
-    overflow: hidden;
-    padding: 95px 20px;
-    background:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(45, 108, 255, 0.30),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 85% 70%,
-            rgba(126, 70, 255, 0.28),
-            transparent 32%
-        ),
-        linear-gradient(
-            135deg,
-            #061a3d,
-            #0d3472
-        );
-}
-
-.about-hero::before {
-    content: "";
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    border: 1px solid rgba(120, 165, 255, 0.12);
-    right: -220px;
-    top: -250px;
-}
-
-.about-hero::after {
-    content: "";
-    position: absolute;
-    width: 350px;
-    height: 350px;
-    border-radius: 50%;
-    border: 1px solid rgba(120, 165, 255, 0.08);
-    left: -180px;
-    bottom: -220px;
-}
-
-.about-hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 850px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.about-badge {
-    display: inline-block;
-    padding: 9px 20px;
-    border-radius: 30px;
-
-    background: rgba(80, 130, 255, 0.12);
-    border: 1px solid rgba(110, 160, 255, 0.25);
-
-    color: #8bb6ff;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 2px;
-
-    margin-bottom: 22px;
-}
-
-.about-hero h1 {
-    margin: 0;
-    color: #ffffff;
-
-    font-size: clamp(42px, 6vw, 68px);
-    line-height: 1.08;
-    font-weight: 850;
-}
-
-.about-hero h1 span {
-    display: block;
-
-    background:
-        linear-gradient(
-            90deg,
-            #4f9aff,
-            #9b63ff
-        );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.about-hero p {
-    max-width: 700px;
-    margin: 25px auto 0;
-
-    color: #b9cbe8;
-    font-size: 17px;
-    line-height: 1.8;
-}
-
-
-/* =========================================================
    COMMON SECTION
 ========================================================= */
 
 .about-section {
     width: 100%;
-    padding: 90px 20px;
-    background: #061936;
+    padding: 55px 20px;
+    background: #ffffff;
 }
 
 .about-tag {
     display: inline-block;
-
-    color: #70a2ff;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 2px;
-
+    color: #155eef;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.16em;
     margin-bottom: 12px;
 }
 
 .about-section-title {
-    margin: 0 0 20px;
-
-    color: #ffffff;
+    margin: 0 0 18px;
+    color: #06204d;
     font-size: clamp(32px, 4vw, 44px);
-    line-height: 1.2;
+    line-height: 1.15;
+    font-weight: 900;
 }
 
 .about-section-title span {
-    color: #70a2ff;
+    color: #155eef;
 }
 
 .about-section p {
-    color: #b9c9e3;
+    color: #173b73;
 }
 
 
@@ -175,19 +67,24 @@
 ========================================================= */
 
 .who-section {
-    background: #061936;
+    background:
+        radial-gradient(
+            circle at 0% 50%,
+            rgba(21, 94, 239, 0.06),
+            transparent 30%
+        ),
+        #ffffff;
 }
 
 .who-grid {
     width: 100%;
     max-width: 1150px;
-
     margin: 0 auto;
 
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
 
-    gap: 55px;
+    gap: 45px;
     align-items: center;
 }
 
@@ -196,76 +93,109 @@
 }
 
 .who-content p {
-    color: #b9c9e3;
-    font-size: 16px;
-    line-height: 1.8;
-    margin: 0 0 16px;
+    color: #173b73;
+    font-size: 15px;
+    line-height: 1.75;
+    margin: 0 0 14px;
 }
 
 
-/* Highlights */
+/* =========================================================
+   HIGHLIGHTS
+========================================================= */
 
 .who-highlights {
     display: grid;
     grid-template-columns: 1fr 1fr;
 
-    gap: 14px;
-    margin-top: 28px;
+    gap: 12px;
+    margin-top: 24px;
 }
 
 .who-point {
-    padding: 16px 18px;
+    padding: 14px 17px;
 
-    background:
-        rgba(255, 255, 255, 0.045);
+    background: #f7faff;
 
-    border: 1px solid rgba(100, 145, 230, 0.18);
+    border: 1px solid rgba(21, 94, 239, 0.14);
 
-    border-radius: 12px;
+    border-radius: 11px;
 
-    color: #dce8fa;
-    font-size: 14px;
-    font-weight: 600;
+    color: #173b73;
+    font-size: 13px;
+    font-weight: 700;
 
-    transition: 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
 }
 
 .who-point:hover {
-    background: rgba(60, 110, 255, 0.10);
-    border-color: rgba(100, 155, 255, 0.35);
-    transform: translateY(-3px);
+    transform: translateY(-5px);
+
+    background: #ffffff;
+
+    border-color: rgba(21, 94, 239, 0.35);
+
+    box-shadow:
+        0 12px 28px rgba(6, 32, 77, 0.12);
 }
 
 .who-point span {
-    color: #70a2ff;
+    color: #155eef;
     margin-right: 7px;
 }
 
 
-/* Who card */
+/* =========================================================
+   BLUE CONTENT CARD
+========================================================= */
 
 .who-card {
     position: relative;
     overflow: hidden;
 
-    padding: 42px;
+    padding: 32px;
 
-    border-radius: 24px;
+    border-radius: 20px;
 
     background:
         linear-gradient(
             145deg,
-            #123e85,
-            #49359d
+            #061f4f 0%,
+            #0a3475 55%,
+            #155eef 100%
         );
 
-    border: 1px solid rgba(110, 160, 255, 0.25);
+    border: 1px solid rgba(61, 139, 255, 0.35);
 
     box-shadow:
-        0 25px 60px rgba(0, 0, 0, 0.25);
+        0 20px 50px rgba(6, 32, 77, 0.22);
+
+    opacity: 0;
+    transform: translateY(45px) scale(0.96);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.45s ease,
+        box-shadow 0.4s ease;
 }
 
-.who-card::after {
+.who-card.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.who-card:hover {
+    transform: translateY(-8px) scale(1.01);
+
+    box-shadow:
+        0 28px 60px rgba(6, 32, 77, 0.30);
+}
+
+.who-card::before {
     content: "";
 
     position: absolute;
@@ -273,58 +203,92 @@
     width: 250px;
     height: 250px;
 
+    right: -110px;
+    top: -120px;
+
     border-radius: 50%;
 
-    background: rgba(255,255,255,0.06);
+    background:
+        radial-gradient(
+            circle,
+            rgba(118, 87, 255, 0.42),
+            transparent 70%
+        );
 
-    right: -120px;
-    top: -120px;
+    animation: aboutGlow 5s ease-in-out infinite;
+}
+
+.who-card::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #3d8bff,
+            #7657ff,
+            #28c7d9
+        );
 }
 
 .who-icon {
     position: relative;
     z-index: 2;
 
-    width: 68px;
-    height: 68px;
+    width: 60px;
+    height: 60px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 18px;
+    border-radius: 16px;
 
     background:
         linear-gradient(
             135deg,
-            #2563eb,
-            #7048e8
+            #ffffff,
+            #dceaff
         );
 
-    font-size: 30px;
+    font-size: 27px;
 
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.20);
+
+    animation: iconFloat 4s ease-in-out infinite;
 }
 
 .who-card h3 {
     position: relative;
     z-index: 2;
 
-    margin: 0 0 12px;
+    margin: 0 0 10px;
 
     color: #ffffff;
 
-    font-size: 26px;
+    font-size: 23px;
+    font-weight: 900;
 }
 
 .who-card p {
     position: relative;
     z-index: 2;
 
-    color: #dce8ff;
+    color: #e5efff;
 
-    line-height: 1.75;
+    line-height: 1.7;
     margin: 0;
+    font-size: 14px;
 }
 
 
@@ -333,32 +297,39 @@
 ========================================================= */
 
 .what-section {
-    background: #071c3e;
+    background:
+        radial-gradient(
+            circle at 100% 50%,
+            rgba(118, 87, 255, 0.06),
+            transparent 30%
+        ),
+        #ffffff;
 }
 
 .section-heading {
     max-width: 760px;
-    margin: 0 auto 50px;
-
+    margin: 0 auto 35px;
     text-align: center;
 }
 
 .section-heading .about-tag {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .section-heading h2 {
-    margin: 0 0 18px;
+    margin: 0 0 12px;
 }
 
 .section-heading p {
-    color: #aebfdc;
-    font-size: 16px;
-    line-height: 1.75;
+    color: #173b73;
+    font-size: 15px;
+    line-height: 1.7;
 }
 
 
-/* Grid */
+/* =========================================================
+   WHAT WE DO GRID
+========================================================= */
 
 .what-grid {
     width: 100%;
@@ -371,101 +342,130 @@
     grid-template-columns:
         repeat(4, minmax(0, 1fr));
 
-    gap: 20px;
+    gap: 18px;
 }
 
 
-/* Cards */
+/* =========================================================
+   BLUE CARDS
+========================================================= */
 
 .what-card {
+    position: relative;
     min-width: 0;
 
-    padding: 30px 24px;
+    padding: 27px 22px;
 
-    border-radius: 20px;
+    border-radius: 18px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(20, 48, 92, 0.96),
-            rgba(13, 36, 75, 0.96)
+            #08275c 0%,
+            #0b397c 60%,
+            #0d468f 100%
         );
 
-    border: 1px solid rgba(82, 137, 255, 0.20);
+    border: 1px solid rgba(61, 139, 255, 0.35);
 
     box-shadow:
-        0 15px 35px rgba(0,0,0,0.18);
+        0 12px 30px rgba(6, 32, 77, 0.18);
+
+    overflow: hidden;
+
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
 
     transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
+        opacity 0.7s ease,
+        transform 0.45s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+}
+
+.what-card.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.what-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    right: -90px;
+    top: -90px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(118, 87, 255, 0.42),
+            transparent 70%
+        );
+
+    transition: transform 0.5s ease;
+}
+
+.what-card::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #3d8bff,
+            #7657ff
+        );
 }
 
 .what-card:hover {
-    transform: translateY(-8px);
-
-    border-color:
-        rgba(100, 155, 255, 0.45);
+    transform: translateY(-9px) scale(1.015);
 
     box-shadow:
-        0 20px 45px rgba(0,0,0,0.28);
+        0 25px 55px rgba(6, 32, 77, 0.30);
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(30, 75, 145, 0.98),
-            rgba(55, 45, 120, 0.98)
-        );
+    border-color:
+        rgba(110, 176, 255, 0.75);
 }
 
-
-/* Icon */
-
-.what-icon {
-    width: 58px !important;
-    height: 58px !important;
-
-    min-width: 58px;
-    max-width: 58px;
-
-    display: flex !important;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 16px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #2563eb,
-            #7048e8
-        );
-
-    font-size: 27px;
-
-    margin-bottom: 22px;
+.what-card:hover::before {
+    transform: scale(1.5);
 }
-
-
-/* Text */
 
 .what-card h3 {
-    margin: 0 0 12px;
+    position: relative;
+    z-index: 2;
+
+    margin: 0 0 10px;
 
     color: #ffffff;
 
-    font-size: 19px;
+    font-size: 18px;
     line-height: 1.4;
+    font-weight: 900;
 }
 
 .what-card p {
+    position: relative;
+    z-index: 2;
+
     margin: 0;
 
-    color: #b9c9e3;
+    color: #e5efff;
 
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.7;
 }
 
@@ -475,7 +475,7 @@
 ========================================================= */
 
 .goal-section {
-    background: #061936;
+    background: #ffffff;
 }
 
 .goal-grid {
@@ -487,46 +487,71 @@
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1fr)
-        minmax(0, 1fr);
+        minmax(0, 1.3fr)
+        minmax(280px, 0.7fr);
 
-    gap: 50px;
+    gap: 40px;
 
-    align-items: stretch;
+    align-items: center;
 }
 
 .goal-content {
-    padding: 20px 0;
+    padding: 0;
 }
 
 .goal-content p {
-    color: #b9c9e3;
+    color: #173b73;
 
-    font-size: 16px;
-    line-height: 1.8;
+    font-size: 15px;
+    line-height: 1.75;
 
-    margin: 0 0 16px;
+    margin: 0 0 14px;
 }
+
+
+/* =========================================================
+   COMMITMENT - COMPACT
+========================================================= */
 
 .goal-card {
     position: relative;
     overflow: hidden;
 
-    padding: 42px;
+    padding: 28px;
 
-    border-radius: 24px;
+    border-radius: 20px;
 
     background:
         linear-gradient(
             135deg,
-            #1558d8,
-            #6942dc
+            #155eef,
+            #7657ff
         );
 
-    border: 1px solid rgba(120,160,255,0.25);
+    border: 1px solid rgba(61, 139, 255, 0.30);
 
     box-shadow:
-        0 25px 60px rgba(0,0,0,0.25);
+        0 20px 45px rgba(6, 32, 77, 0.22);
+
+    opacity: 0;
+    transform: translateY(45px) scale(0.96);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.45s ease,
+        box-shadow 0.4s ease;
+}
+
+.goal-card.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.goal-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 28px 55px rgba(6, 32, 77, 0.30);
 }
 
 .goal-card::before {
@@ -534,54 +559,42 @@
 
     position: absolute;
 
-    width: 280px;
-    height: 280px;
+    width: 220px;
+    height: 220px;
+
+    right: -100px;
+    top: -100px;
 
     border-radius: 50%;
 
-    background: rgba(255,255,255,0.08);
+    background:
+        rgba(255,255,255,0.10);
 
-    right: -130px;
-    top: -130px;
-}
-
-.goal-card-icon {
-    position: relative;
-
-    width: 65px;
-    height: 65px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 17px;
-
-    background: rgba(255,255,255,0.13);
-
-    font-size: 30px;
-
-    margin-bottom: 25px;
+    animation: aboutGlow 5s ease-in-out infinite;
 }
 
 .goal-card h3 {
     position: relative;
+    z-index: 2;
 
-    margin: 0 0 14px;
+    margin: 0 0 10px;
 
     color: #ffffff;
 
-    font-size: 27px;
+    font-size: 23px;
+    font-weight: 900;
 }
 
 .goal-card p {
     position: relative;
+    z-index: 2;
 
     margin: 0;
 
-    color: #e0eaff;
+    color: #e8f0ff;
 
-    line-height: 1.75;
+    line-height: 1.65;
+    font-size: 14px;
 }
 
 
@@ -590,7 +603,13 @@
 ========================================================= */
 
 .vision-section {
-    background: #071c3e;
+    background:
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(21, 94, 239, 0.06),
+            transparent 30%
+        ),
+        #ffffff;
 }
 
 .vision-card {
@@ -605,275 +624,90 @@
 
     gap: 30px;
 
-    padding: 42px;
+    padding: 30px 35px;
 
-    border-radius: 24px;
+    border-radius: 20px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(20,48,92,0.96),
-            rgba(13,36,75,0.96)
+            #08275c,
+            #0b397c
         );
 
-    border: 1px solid rgba(82,137,255,0.20);
+    border: 1px solid rgba(61, 139, 255, 0.35);
 
     box-shadow:
-        0 15px 40px rgba(0,0,0,0.20);
+        0 15px 40px rgba(0,0,0,0.18);
+
+    opacity: 0;
+    transform: translateY(45px) scale(0.97);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.45s ease,
+        box-shadow 0.4s ease;
 }
 
-.vision-icon {
-    flex-shrink: 0;
+.vision-card.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
 
-    width: 70px;
-    height: 70px;
+.vision-card:hover {
+    transform: translateY(-7px);
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 18px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #2563eb,
-            #7048e8
-        );
-
-    font-size: 32px;
+    box-shadow:
+        0 25px 55px rgba(6, 32, 77, 0.28);
 }
 
 .vision-card h2 {
-    margin: 0 0 12px;
+    margin: 0 0 10px;
 
     color: #ffffff;
 
-    font-size: 30px;
+    font-size: 28px;
+    font-weight: 900;
 }
 
 .vision-card p {
-    margin: 0 0 10px;
-
-    color: #b9c9e3;
-
-    line-height: 1.75;
-}
-
-
-/* =========================================================
-   COURSES
-========================================================= */
-
-.courses-section {
-    background: #061936;
-}
-
-.course-grid-about {
-    width: 100%;
-    max-width: 900px;
-
-    margin: 0 auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-    gap: 22px;
-}
-
-.course-about-card {
-    min-width: 0;
-
-    display: flex;
-    flex-direction: column;
-
-    padding: 30px;
-
-    border-radius: 22px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(20,48,92,0.96),
-            rgba(13,36,75,0.96)
-        );
-
-    border: 1px solid rgba(82,137,255,0.20);
-
-    text-decoration: none;
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,0.18);
-
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.course-about-card:hover {
-    transform: translateY(-8px);
-
-    border-color:
-        rgba(100,155,255,0.45);
-
-    box-shadow:
-        0 20px 45px rgba(0,0,0,0.28);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(30,75,145,0.98),
-            rgba(55,45,120,0.98)
-        );
-}
-
-.course-about-icon {
-    width: 60px !important;
-    height: 60px !important;
-
-    min-width: 60px;
-    max-width: 60px;
-
-    display: flex !important;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 16px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #2563eb,
-            #7048e8
-        );
-
-    font-size: 29px;
-
-    margin-bottom: 20px;
-}
-
-.course-about-card h3 {
-    margin: 0 0 10px;
-
-    color: #ffffff;
-
-    font-size: 21px;
-}
-
-.course-about-card p {
-    margin: 0 0 18px;
-
-    color: #b9c9e3;
-
-    font-size: 14px;
-    line-height: 1.7;
-}
-
-.course-link {
-    margin-top: auto;
-
-    color: #70a2ff;
-
-    font-weight: 800;
-    font-size: 14px;
-}
-
-
-/* =========================================================
-   CTA
-========================================================= */
-
-.about-cta-section {
-    background: #071c3e;
-}
-
-.about-cta {
-    position: relative;
-    overflow: hidden;
-
-    width: 100%;
-    max-width: 1150px;
-
-    margin: 0 auto;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 30px;
-
-    padding: 48px;
-
-    border-radius: 26px;
-
-    background:
-        linear-gradient(
-            120deg,
-            #123f88,
-            #6542d8
-        );
-
-    border: 1px solid rgba(120,160,255,0.25);
-
-    box-shadow:
-        0 25px 60px rgba(0,0,0,0.25);
-}
-
-.about-cta::after {
-    content: "";
-
-    position: absolute;
-
-    width: 300px;
-    height: 300px;
-
-    border-radius: 50%;
-
-    background: rgba(255,255,255,0.07);
-
-    right: -130px;
-    top: -130px;
-}
-
-.cta-content {
-    position: relative;
-    z-index: 2;
-}
-
-.cta-tag {
-    color: #cfe0ff;
-
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 2px;
-}
-
-.about-cta h2 {
-    margin: 10px 0;
-
-    color: #ffffff;
-
-    font-size: 32px;
-}
-
-.about-cta p {
-    margin: 0;
+    margin: 0 0 8px;
 
     color: #dce8ff;
 
-    line-height: 1.6;
+    line-height: 1.7;
+    font-size: 14px;
 }
 
-.about-cta .btn {
-    position: relative;
-    z-index: 5;
 
-    flex-shrink: 0;
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes iconFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes aboutGlow {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.25);
+        opacity: 1;
+    }
 }
 
 
@@ -892,12 +726,7 @@
         grid-template-columns: 1fr;
     }
 
-    .who-card {
-        max-width: 700px;
-        width: 100%;
-        margin: 0 auto;
-    }
-
+    .who-card,
     .goal-card {
         max-width: 700px;
         width: 100%;
@@ -909,15 +738,7 @@
 @media (max-width: 700px) {
 
     .about-section {
-        padding: 65px 18px;
-    }
-
-    .about-hero {
-        padding: 70px 18px;
-    }
-
-    .about-hero h1 {
-        font-size: 42px;
+        padding: 45px 18px;
     }
 
     .what-grid {
@@ -928,37 +749,48 @@
         grid-template-columns: 1fr;
     }
 
-    .course-grid-about {
-        grid-template-columns: 1fr;
-    }
-
     .vision-card {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 30px;
-    }
-
-    .about-cta {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 32px;
+        padding: 26px;
     }
 }
 
 
 @media (max-width: 480px) {
 
-    .about-hero h1 {
-        font-size: 36px;
+    .about-section {
+        padding: 40px 16px;
     }
 
     .who-card,
     .goal-card {
-        padding: 30px;
+        padding: 25px;
     }
 
-    .about-cta h2 {
-        font-size: 27px;
+    .about-section-title {
+        font-size: 32px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .who-card,
+    .what-card,
+    .goal-card,
+    .vision-card {
+        opacity: 1;
+        transform: none;
     }
 }
 </style>
@@ -1253,5 +1085,48 @@
 
 
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const animatedElements = document.querySelectorAll(
+        ".who-card, .what-card, .goal-card, .vision-card"
+    );
+
+    const observer = new IntersectionObserver(
+
+        function (entries) {
+
+            entries.forEach(function (entry) {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("show");
+
+                } else {
+
+                    entry.target.classList.remove("show");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        }
+
+    );
+
+    animatedElements.forEach(function (element) {
+
+        observer.observe(element);
+
+    });
+
+});
+</script>
 
 {% endblock %}

@@ -5,75 +5,97 @@
 
 {% block content %}
 <style>
-    /* =====================================================
-   PYTHON FULL STACK - COMING SOON
-===================================================== */
+/* =========================================================
+   PYTHON FULL STACK — PREMIUM ALPHASTACK BLUE THEME
+========================================================= */
 
 .coming-soon-page {
     min-height: calc(100vh - 70px);
-
     display: flex;
     align-items: center;
-
-    padding: 70px 0;
-
-    background:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(45, 108, 255, 0.18),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 85% 75%,
-            rgba(126, 70, 255, 0.18),
-            transparent 30%
-        ),
-        #061a3d;
+    padding: 65px 0;
 
     position: relative;
     overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 0% 20%,
+            rgba(21, 94, 239, 0.10),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 100% 75%,
+            rgba(118, 87, 255, 0.10),
+            transparent 28%
+        ),
+        #ffffff;
+
+    color: #06204d;
 }
 
 
-/* Decorative circles */
+/* =========================================================
+   BACKGROUND DECORATION
+========================================================= */
 
 .coming-soon-page::before {
     content: "";
 
     position: absolute;
 
-    width: 350px;
-    height: 350px;
+    width: 420px;
+    height: 420px;
 
     border-radius: 50%;
 
-    border: 1px solid rgba(80, 140, 255, 0.12);
+    left: -220px;
+    top: 10%;
 
-    top: -150px;
-    left: -100px;
+    background:
+        radial-gradient(
+            circle,
+            rgba(37, 117, 255, 0.12),
+            transparent 70%
+        );
+
+    animation: backgroundFloat 7s ease-in-out infinite;
+
+    pointer-events: none;
 }
+
 
 .coming-soon-page::after {
     content: "";
 
     position: absolute;
 
-    width: 450px;
-    height: 450px;
+    width: 380px;
+    height: 380px;
 
     border-radius: 50%;
 
-    border: 1px solid rgba(130, 90, 255, 0.10);
+    right: -190px;
+    bottom: 5%;
 
-    right: -180px;
-    bottom: -200px;
+    background:
+        radial-gradient(
+            circle,
+            rgba(118, 87, 255, 0.12),
+            transparent 70%
+        );
+
+    animation: backgroundFloatReverse 8s ease-in-out infinite;
+
+    pointer-events: none;
 }
 
 
-/* Main Card */
+/* =========================================================
+   MAIN CARD
+========================================================= */
 
 .coming-soon-card {
-
     position: relative;
     z-index: 2;
 
@@ -81,32 +103,97 @@
 
     margin: auto;
 
-    padding: 65px 70px;
+    padding: 60px 65px;
 
     text-align: center;
 
-    border-radius: 30px;
+    border-radius: 28px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(18, 54, 112, 0.92),
-            rgba(25, 36, 92, 0.92)
+            #061f4f 0%,
+            #0a3475 55%,
+            #155eef 100%
         );
 
-    border: 1px solid rgba(100, 155, 255, 0.25);
+    border: 1px solid rgba(61, 139, 255, 0.35);
 
     box-shadow:
-        0 30px 90px rgba(0, 0, 0, 0.30);
+        0 25px 65px rgba(6, 32, 77, 0.25);
+
+    overflow: hidden;
+
+    animation: cardReveal 0.8s ease both;
 }
 
 
-/* Course Icon */
+/* Animated top line */
+
+.coming-soon-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #3d8bff,
+            #7657ff,
+            #28c7d9,
+            #3d8bff
+        );
+
+    background-size: 300% 100%;
+
+    animation: gradientMove 4s linear infinite;
+}
+
+
+/* Glow circle */
+
+.coming-soon-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    right: -150px;
+    top: -150px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(118, 87, 255, 0.35),
+            transparent 70%
+        );
+
+    animation: glowFloat 6s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   PYTHON ICON
+========================================================= */
 
 .coming-course-icon {
+    position: relative;
+    z-index: 2;
 
-    width: 100px;
-    height: 100px;
+    width: 105px;
+    height: 105px;
 
     margin: 0 auto 25px;
 
@@ -114,40 +201,50 @@
     align-items: center;
     justify-content: center;
 
-    border-radius: 28px;
+    border-radius: 24px;
 
     font-size: 52px;
 
     background:
         linear-gradient(
             135deg,
-            #ffd84d,
-            #4d7cff
+            #ffffff,
+            #dceaff
         );
 
+    border: 2px solid rgba(255,255,255,0.55);
+
     box-shadow:
-        0 15px 40px rgba(39, 93, 255, 0.30);
+        0 15px 35px rgba(0,0,0,0.20);
 
-    animation: floatPython 3s ease-in-out infinite;
+    animation:
+        iconFloat 4s ease-in-out infinite,
+        iconGlow 3s ease-in-out infinite alternate;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
 
-@keyframes floatPython {
+.coming-soon-card:hover .coming-course-icon {
+    transform:
+        translateY(-7px)
+        rotate(-4deg)
+        scale(1.05);
 
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-8px);
-    }
+    box-shadow:
+        0 20px 45px rgba(61,139,255,0.35);
 }
 
 
-/* Coming Soon Badge */
+/* =========================================================
+   COMING SOON BADGE
+========================================================= */
 
 .coming-badge {
+    position: relative;
+    z-index: 2;
 
     display: inline-block;
 
@@ -155,45 +252,58 @@
 
     border-radius: 30px;
 
-    background: rgba(83, 135, 255, 0.13);
+    background:
+        rgba(255,255,255,0.10);
 
-    border: 1px solid rgba(103, 153, 255, 0.35);
+    border:
+        1px solid rgba(121,181,255,0.35);
 
-    color: #82adff;
+    color: #79b5ff;
 
-    font-size: 12px;
+    font-size: 11px;
 
-    font-weight: 800;
+    font-weight: 900;
 
-    letter-spacing: 2px;
+    letter-spacing: 0.16em;
 
     margin-bottom: 18px;
+
+    animation:
+        badgePulse 2.5s ease-in-out infinite;
 }
 
 
-/* Main Heading */
+/* =========================================================
+   HEADING
+========================================================= */
 
 .coming-soon-card h1 {
+    position: relative;
+    z-index: 2;
 
     margin: 0;
 
-    color: #ffffff;
+    color: #ffffff !important;
 
     font-size: clamp(40px, 6vw, 64px);
 
     line-height: 1.05;
 
-    font-weight: 850;
+    font-weight: 900;
+
+    letter-spacing: -1px;
+
+    animation:
+        titleReveal 0.9s ease 0.15s both;
 }
 
 
 .coming-soon-card h1 span {
-
     background:
         linear-gradient(
             90deg,
-            #438bff,
-            #8d5cff
+            #5fa2ff,
+            #9b7cff
         );
 
     -webkit-background-clip: text;
@@ -203,43 +313,63 @@
 }
 
 
+/* =========================================================
+   DJANGO TEXT
+========================================================= */
+
 .django-text {
+    position: relative;
+    z-index: 2;
 
-    margin-top: 10px;
+    margin-top: 12px;
 
-    color: #78a8ff;
+    color: #79b5ff;
 
     font-size: 26px;
 
-    font-weight: 700;
+    font-weight: 800;
+
+    animation:
+        titleReveal 0.9s ease 0.25s both;
 }
 
 
-/* Description */
+/* =========================================================
+   DESCRIPTION
+========================================================= */
 
 .coming-description {
+    position: relative;
+    z-index: 2;
 
     max-width: 700px;
 
     margin: 22px auto 35px;
 
-    color: #b9c9e4;
+    color: #e5efff !important;
 
     font-size: 16px;
 
     line-height: 1.8;
+
+    animation:
+        titleReveal 0.9s ease 0.35s both;
 }
 
 
-/* Coming Message */
+/* =========================================================
+   COMING MESSAGE
+========================================================= */
 
 .coming-message {
+    position: relative;
+    z-index: 2;
 
     max-width: 720px;
 
-    margin: 0 auto 40px;
+    margin: 0 auto 38px;
 
-    padding: 24px;
+    padding: 23px 25px;
 
     display: flex;
 
@@ -252,15 +382,37 @@
     border-radius: 18px;
 
     background:
-        rgba(255, 255, 255, 0.055);
+        rgba(255,255,255,0.08);
 
-    border: 1px solid
-        rgba(108, 153, 255, 0.20);
+    border:
+        1px solid rgba(121,181,255,0.20);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.05);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
 }
 
 
-.message-icon {
+.coming-message:hover {
+    transform: translateY(-5px);
 
+    background:
+        rgba(255,255,255,0.12);
+
+    border-color:
+        rgba(121,181,255,0.40);
+}
+
+
+/* =========================================================
+   MESSAGE ICON
+========================================================= */
+
+.message-icon {
     width: 52px;
     height: 52px;
 
@@ -275,29 +427,34 @@
     background:
         linear-gradient(
             135deg,
-            #246eff,
-            #7b4dff
+            #155eef,
+            #7657ff
         );
 
+    color: #ffffff;
+
     font-size: 23px;
+
+    box-shadow:
+        0 8px 20px rgba(21,94,239,0.25);
 }
 
 
 .coming-message h2 {
-
     margin: 0 0 7px;
 
-    color: #ffffff;
+    color: #ffffff !important;
 
     font-size: 20px;
+
+    font-weight: 900;
 }
 
 
 .coming-message p {
-
     margin: 0;
 
-    color: #aebfda;
+    color: #d6e5ff !important;
 
     font-size: 14px;
 
@@ -305,30 +462,19 @@
 }
 
 
-/* What's Coming */
+/* =========================================================
+   TECHNOLOGIES
+========================================================= */
 
 .technology-section {
+    position: relative;
+    z-index: 2;
 
     margin-top: 10px;
 }
 
 
-.technology-section .tag {
-
-    color: #639aff;
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 18px;
-}
-
-
 .technology-list {
-
     display: flex;
 
     flex-wrap: wrap;
@@ -340,42 +486,53 @@
 
 
 .technology-list span {
-
     padding: 10px 16px;
 
-    border-radius: 25px;
+    border-radius: 9px;
 
     background:
-        rgba(255,255,255,0.07);
+        rgba(255,255,255,0.09);
 
-    border: 1px solid
-        rgba(120,160,255,0.18);
+    border:
+        1px solid rgba(121,181,255,0.20);
 
-    color: #dce8ff;
+    color: #ffffff;
 
     font-size: 13px;
 
-    font-weight: 600;
+    font-weight: 700;
 
-    transition: 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 
 .technology-list span:hover {
-
-    transform: translateY(-3px);
+    transform:
+        translateY(-5px)
+        scale(1.03);
 
     background:
-        rgba(68, 118, 255, 0.15);
+        rgba(255,255,255,0.16);
 
     border-color:
-        rgba(100, 155, 255, 0.40);
+        rgba(121,181,255,0.45);
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.18);
 }
 
 
-/* Actions */
+/* =========================================================
+   ACTIONS
+========================================================= */
 
 .coming-actions {
+    position: relative;
+    z-index: 2;
 
     display: flex;
 
@@ -389,27 +546,70 @@
 }
 
 
-.coming-contact {
+.coming-actions .btn {
+    padding: 12px 23px;
 
-    color: #8db5ff;
+    border: none !important;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #155eef,
+            #7657ff
+        ) !important;
+
+    color: #ffffff !important;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 10px 25px rgba(21,94,239,0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.coming-actions .btn:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 16px 35px rgba(21,94,239,0.40);
+}
+
+
+.coming-contact {
+    color: #79b5ff !important;
 
     font-size: 14px;
 
-    font-weight: 700;
+    font-weight: 800;
 
     text-decoration: none;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
 }
 
 
 .coming-contact:hover {
+    color: #ffffff !important;
 
-    color: #ffffff;
+    transform: translateY(-2px);
 }
 
 
-/* Bottom */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 .coming-footer {
+    position: relative;
+    z-index: 2;
 
     display: flex;
 
@@ -421,102 +621,237 @@
 
     margin-top: 35px;
 
-    color: #8198bc;
+    color: #a9c4ed;
 
     font-size: 12px;
 }
 
 
 .dot {
-
     width: 7px;
     height: 7px;
 
+    flex-shrink: 0;
+
     border-radius: 50%;
 
-    background: #4d8cff;
+    background: #5fa2ff;
 
     box-shadow:
-        0 0 10px #4d8cff;
+        0 0 12px #5fa2ff;
+
+    animation:
+        dotPulse 1.8s ease-in-out infinite;
 }
 
 
-/* =====================================================
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes cardReveal {
+    from {
+        opacity: 0;
+        transform:
+            translateY(40px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes iconFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+@keyframes iconGlow {
+    from {
+        box-shadow:
+            0 15px 35px rgba(0,0,0,0.20),
+            0 0 15px rgba(61,139,255,0.10);
+    }
+
+    to {
+        box-shadow:
+            0 18px 40px rgba(0,0,0,0.22),
+            0 0 35px rgba(61,139,255,0.28);
+    }
+}
+
+
+@keyframes badgePulse {
+    0%, 100% {
+        box-shadow:
+            0 0 0 rgba(61,139,255,0);
+    }
+
+    50% {
+        box-shadow:
+            0 0 22px rgba(61,139,255,0.15);
+    }
+}
+
+
+@keyframes titleReveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+@keyframes glowFloat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+
+@keyframes backgroundFloat {
+    0%, 100% {
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translateY(30px)
+            scale(1.12);
+    }
+}
+
+
+@keyframes backgroundFloatReverse {
+    0%, 100% {
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translateY(-25px)
+            scale(1.15);
+    }
+}
+
+
+@keyframes dotPulse {
+    0%, 100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.35);
+    }
+}
+
+
+/* =========================================================
    RESPONSIVE
-===================================================== */
+========================================================= */
 
 @media (max-width: 768px) {
 
     .coming-soon-page {
+        min-height: calc(100vh - 60px);
 
-        padding: 40px 0;
+        padding: 45px 0;
     }
 
-
     .coming-soon-card {
-
         padding: 45px 25px;
 
         border-radius: 24px;
     }
 
-
     .coming-course-icon {
-
-        width: 80px;
-        height: 80px;
+        width: 85px;
+        height: 85px;
 
         font-size: 42px;
 
-        border-radius: 22px;
+        border-radius: 20px;
     }
 
-
     .coming-soon-card h1 {
-
         font-size: 40px;
     }
 
-
     .django-text {
-
         font-size: 22px;
     }
 
-
     .coming-description {
-
         font-size: 15px;
     }
 
-
     .coming-message {
-
         align-items: flex-start;
 
         padding: 20px;
     }
 
-
     .coming-actions {
-
         flex-direction: column;
 
         width: 100%;
     }
 
-
     .coming-actions .btn {
-
         width: 100%;
     }
 
+    .coming-contact {
+        margin-top: 3px;
+    }
 
     .coming-footer {
-
         flex-direction: column;
 
         line-height: 1.5;
+
+        text-align: center;
     }
 }
 
@@ -524,22 +859,37 @@
 @media (max-width: 480px) {
 
     .coming-soon-card {
-
         padding: 35px 18px;
     }
 
-
     .coming-soon-card h1 {
-
         font-size: 34px;
     }
 
+    .technology-list {
+        gap: 8px;
+    }
 
     .technology-list span {
-
         font-size: 12px;
 
         padding: 8px 12px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+
+        transition: none !important;
     }
 }
 </style>

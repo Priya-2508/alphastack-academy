@@ -4,290 +4,715 @@
 {% block title %}Home | AlphaStack Academy{% endblock %}
 
 {% block content %}
+
 <style>
-    /* =====================================================
-   ATTRACTIVE HOME PAGE
-===================================================== */
+
+/* =========================================================
+   ALPHASTACK ACADEMY - HOME PAGE
+   NAVY BLUE + INK BLUE + ELECTRIC BLUE
+========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #ffffff;
+    color: #0B1F4B;
+}
+
+/* =========================================================
+   COLOR SYSTEM
+========================================================= */
+
+:root {
+    --navy: #071A3D;
+    --navy-2: #0B1F4B;
+    --ink-blue: #102F68;
+    --blue: #1769FF;
+    --blue-light: #4D8DFF;
+    --purple: #7657FF;
+    --white: #ffffff;
+    --light-blue: #EEF4FF;
+    --border-blue: #BFD3F5;
+    --text-blue: #31588F;
+}
 
 
-/* ================= HERO ================= */
+/* =========================================================
+   COMMON
+========================================================= */
 
-.hero {
+.hero,
+.upcoming-section,
+.learning-section,
+.home-cta {
     position: relative;
     overflow: hidden;
-    padding: 85px 0;
-    background:
-        radial-gradient(circle at 90% 20%, #dbe8ff 0, transparent 28%),
-        radial-gradient(circle at 10% 90%, #eee7ff 0, transparent 25%),
-        #ffffff;
 }
 
-.hero-grid {
-    display: grid;
-    grid-template-columns: 1.05fr .95fr;
-    gap: 60px;
-    align-items: center;
-}
-
-.hero-content {
+.container {
     position: relative;
     z-index: 2;
 }
 
-.hero h1 {
-    font-size: clamp(3rem, 5vw, 5rem);
-    line-height: 1.02;
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    padding: 85px 0 90px;
+
+    background:
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(23,105,255,.12),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(118,87,255,.08),
+            transparent 25%
+        ),
+        #ffffff;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+
+    width: 430px;
+    height: 430px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(23,105,255,.10);
+
+    top: -240px;
+    right: -120px;
+
+    animation: rotateCircle 18s linear infinite;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 320px;
+    height: 320px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(118,87,255,.08);
+
+    bottom: -180px;
+    left: -140px;
+
+    animation: rotateCircleReverse 20s linear infinite;
+}
+
+.hero-grid {
+    display: grid;
+
+    grid-template-columns: 1.05fr .95fr;
+
+    gap: 65px;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hero-content {
+    animation: heroTextReveal .9s ease both;
+}
+
+.hero-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 15px;
+
+    border-radius: 50px;
+
+    background: #EEF4FF;
+
+    border: 1px solid #C8DBF7;
+
+    color: var(--blue);
+
+    font-size: 11px;
+
     font-weight: 900;
-    margin-bottom: 25px;
+
+    letter-spacing: .13em;
+
+    margin-bottom: 22px;
+}
+
+.hero-badge::before {
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--blue);
+
+    box-shadow: 0 0 12px rgba(23,105,255,.7);
+}
+
+.hero h1 {
+    margin: 0 0 22px;
+
+    color: var(--navy) !important;
+
+    font-size: clamp(42px, 5vw, 68px);
+
+    line-height: 1.03;
+
+    font-weight: 900;
+
+    letter-spacing: -1.5px;
 }
 
 .hero h1 span {
-    background: linear-gradient(
-        90deg,
-        #155eef,
-        #7b4dff
-    );
+    display: block;
+
+    background:
+        linear-gradient(
+            90deg,
+            #1769FF,
+            #7657FF,
+            #1769FF
+        );
+
+    background-size: 200% auto;
 
     -webkit-background-clip: text;
+    background-clip: text;
+
     -webkit-text-fill-color: transparent;
+
+    animation: gradientMove 4s linear infinite;
 }
 
 .hero p {
     max-width: 650px;
-    font-size: 1.08rem;
-    line-height: 1.8;
+
+    margin: 0;
+
+    color: #294E82 !important;
+
+    font-size: 16px;
+
+    line-height: 1.85;
 }
+
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
 
 .hero-actions {
     display: flex;
-    gap: 14px;
-    margin-top: 30px;
+
     flex-wrap: wrap;
+
+    gap: 13px;
+
+    margin-top: 30px;
 }
+
+.hero-primary {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 14px 25px;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1769FF,
+            #7657FF
+        );
+
+    color: #ffffff !important;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 12px 30px rgba(23,105,255,.25);
+
+    transition: .3s ease;
+}
+
+.hero-primary:hover {
+    color: #ffffff !important;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 20px 40px rgba(23,105,255,.35);
+}
+
+.hero-secondary {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 13px 24px;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    border: 1px solid #BFD3F5;
+
+    color: var(--navy) !important;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    transition: .3s ease;
+}
+
+.hero-secondary:hover {
+    background: #EEF4FF;
+
+    border-color: var(--blue);
+
+    color: var(--blue) !important;
+
+    transform: translateY(-4px);
+}
+
+
+/* =========================================================
+   HERO HIGHLIGHTS
+========================================================= */
 
 .hero-highlights {
     display: flex;
-    gap: 0;
-    margin-top: 35px;
+
+    margin-top: 38px;
 }
 
 .hero-highlights div {
-    padding: 0 25px;
-    border-left: 2px solid #dce4f5;
+    padding: 0 23px;
+
+    border-left: 2px solid #C7D8F3;
 }
 
 .hero-highlights div:first-child {
     padding-left: 0;
-    border-left: 0;
+
+    border-left: none;
 }
 
 .hero-highlights strong {
     display: block;
-    color: #06204d;
-    font-size: 1.05rem;
+
+    color: var(--navy) !important;
+
+    font-size: 15px;
+
+    font-weight: 900;
 }
 
 .hero-highlights span {
     display: block;
-    color: #7a8499;
-    font-size: .8rem;
+
+    margin-top: 4px;
+
+    color: #5474A5 !important;
+
+    font-size: 11px;
 }
 
 
-/* ================= HERO VISUAL ================= */
+/* =========================================================
+   HERO VISUAL
+========================================================= */
 
 .hero-visual {
     position: relative;
-    min-height: 430px;
+
+    min-height: 420px;
+
     display: flex;
-    justify-content: center;
+
     align-items: center;
+
+    justify-content: center;
+
+    animation: visualReveal 1s ease .15s both;
 }
 
 .code-window {
-    width: 430px;
-    min-height: 320px;
-    background: #071a3a;
-    border-radius: 22px;
-    box-shadow:
-        0 30px 70px rgba(4, 28, 73, .25);
+    width: 440px;
+
+    min-height: 330px;
+
+    border-radius: 24px;
 
     overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #071A3D,
+            #0D2B63,
+            #123D91
+        );
+
+    border: 1px solid rgba(77,141,255,.35);
+
+    box-shadow:
+        0 30px 70px rgba(7,26,61,.28),
+        0 0 50px rgba(23,105,255,.12);
+
     transform: rotate(2deg);
+
+    animation: codeFloat 5s ease-in-out infinite;
 }
 
 .code-header {
-    height: 45px;
-    background: #102b55;
+    height: 46px;
+
     display: flex;
+
     align-items: center;
+
     gap: 7px;
+
     padding-left: 18px;
+
+    background: rgba(4,16,38,.65);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
 }
 
 .code-header span {
     width: 10px;
     height: 10px;
+
     border-radius: 50%;
-    background: #8fa4c7;
+
+    background: #70A2FF;
+
+    animation: dotPulse 2s ease-in-out infinite;
+}
+
+.code-header span:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.code-header span:nth-child(3) {
+    animation-delay: .4s;
 }
 
 .code-content {
-    padding: 35px 30px;
+    padding: 32px 30px;
+
+    color: #EAF2FF !important;
+
     font-family: Consolas, monospace;
-    color: #d8e5ff;
+
+    font-size: 15px;
+
     line-height: 2;
-    font-size: 16px;
 }
 
 .code-purple {
-    color: #d38aff;
+    color: #C59BFF !important;
 }
 
 .code-blue {
-    color: #56b7ff;
+    color: #70C5FF !important;
+}
+
+.code-green {
+    color: #76D99C !important;
 }
 
 .code-bottom {
-    padding: 14px 22px;
     display: flex;
+
     justify-content: space-between;
-    color: #76d99c;
-    background: #0b2347;
-    font-size: 13px;
+
+    padding: 14px 22px;
+
+    background: rgba(4,16,38,.55);
+
+    color: #76D99C !important;
+
+    font-size: 12px;
 }
+
+
+/* =========================================================
+   FLOATING CARDS
+========================================================= */
 
 .floating-card {
     position: absolute;
-    z-index: 3;
-    padding: 15px 20px;
-    border-radius: 15px;
-    background: white;
-    box-shadow: 0 15px 40px rgba(6, 32, 77, .15);
+
+    z-index: 4;
+
     display: grid;
-    grid-template-columns: 35px auto;
-    column-gap: 8px;
+
+    grid-template-columns: 38px auto;
+
+    column-gap: 10px;
+
     align-items: center;
+
+    padding: 14px 18px;
+
+    border-radius: 15px;
+
+    background: #ffffff;
+
+    border: 1px solid #C5D8F5;
+
+    box-shadow:
+        0 18px 45px rgba(7,26,61,.15);
+
+    animation: floatingCard 4s ease-in-out infinite;
+}
+
+.floating-card-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1769FF,
+            #7657FF
+        );
+
+    color: #ffffff;
 }
 
 .floating-card strong {
-    color: #06204d;
+    color: var(--navy) !important;
+
+    font-size: 12px;
 }
 
 .floating-card small {
     grid-column: 2;
-    color: #7a8499;
+
+    color: #5273A3 !important;
+
+    font-size: 10px;
 }
 
 .card-one {
-    left: 0;
+    left: -10px;
     top: 55px;
 }
 
 .card-two {
-    right: 0;
-    bottom: 45px;
+    right: -10px;
+    bottom: 40px;
+
+    animation-delay: 1.5s;
 }
 
 
-/* ================= UPCOMING EVENT ================= */
+/* =========================================================
+   UPCOMING COHORT
+========================================================= */
 
 .upcoming-section {
-    position: relative;
-    padding: 90px 0;
+    padding: 85px 20px;
+
     background:
         linear-gradient(
             135deg,
-            #061c43,
-            #123d91
+            #071A3D 0%,
+            #0B1F4B 50%,
+            #102F68 100%
         );
-    overflow: hidden;
 }
 
 .upcoming-section::before {
     content: "";
+
     position: absolute;
-    width: 500px;
-    height: 500px;
+
+    width: 520px;
+    height: 520px;
+
     border-radius: 50%;
-    background: rgba(44, 120, 255, .18);
-    top: -250px;
-    right: -150px;
+
+    border: 1px solid rgba(112,162,255,.12);
+
+    top: -300px;
+    right: -160px;
 }
 
 .upcoming-section::after {
     content: "";
+
     position: absolute;
-    width: 350px;
-    height: 350px;
+
+    width: 380px;
+    height: 380px;
+
     border-radius: 50%;
-    background: rgba(164, 78, 255, .15);
-    bottom: -200px;
-    left: -100px;
+
+    border: 1px solid rgba(118,87,255,.12);
+
+    bottom: -230px;
+    left: -180px;
 }
+
+
+/* =========================================================
+   COHORT HEADING
+========================================================= */
 
 .event-heading {
-    position: relative;
-    z-index: 2;
+    text-align: center;
+
+    margin-bottom: 42px;
 }
 
-.event-heading h2 {
-    color: white;
+.event-heading .cohort-title {
+    margin: 0 0 10px;
+
+    color: #ffffff !important;
+
+    font-size: clamp(30px, 4vw, 45px);
+
+    font-weight: 900;
+
+    letter-spacing: -.6px;
+}
+
+.cohort-title span {
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #70A2FF,
+            #B28AFF,
+            #ffffff
+        );
+
+    background-size: 250% auto;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    animation: gradientMove 5s linear infinite;
 }
 
 .event-heading p {
-    color: #cbd9f5;
-}
+    margin: 0;
 
-.event-badge {
-    display: inline-block;
-    padding: 8px 15px;
-    border-radius: 50px;
-    color: white;
-    background: linear-gradient(
-        90deg,
-        #155eef,
-        #8b5cf6
-    );
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: .12em;
-    margin-bottom: 15px;
+    color: #BFD2F1 !important;
+
+    font-size: 15px;
 }
 
 
-/* ================= EVENT CARD ================= */
+/* =========================================================
+   EVENT CARD
+========================================================= */
 
 .event-card {
     position: relative;
-    z-index: 2;
+
+    z-index: 3;
 
     display: grid;
-    grid-template-columns: 1.5fr .7fr;
 
-    background: rgba(255,255,255,.98);
+    grid-template-columns: 1.55fr .8fr;
 
-    border-radius: 28px;
+    max-width: 1100px;
+
+    margin: auto;
 
     overflow: hidden;
+
+    border-radius: 26px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #F7FAFF,
+            #E8F1FF
+        );
+
+    border: 1px solid rgba(112,162,255,.45);
 
     box-shadow:
         0 30px 80px rgba(0,0,0,.25);
 
-    border: 1px solid rgba(255,255,255,.5);
+    transition: .4s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 40px 95px rgba(0,0,0,.32);
 }
 
 
-/* EVENT LEFT */
+/* =========================================================
+   EVENT MAIN
+========================================================= */
 
 .event-main {
-    padding: 40px;
+    padding: 45px;
 }
 
 .event-top {
     display: flex;
-    gap: 20px;
+
     align-items: center;
+
+    gap: 20px;
 }
 
 .event-icon {
@@ -297,196 +722,265 @@
     flex-shrink: 0;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    border-radius: 20px;
-
-    background: rgba(255, 255, 255, 0.06);
-
-    border: 1px solid rgba(112, 150, 255, 0.20);
-
-    box-shadow:
-        0 10px 30px rgba(37, 99, 235, 0.15);
-
-    animation: iconFloat 3s ease-in-out infinite;
-
-    transition: all 0.35s ease;
-}
-
-.event-icon img {
-    width: 48px;
-    height: 48px;
-
-    object-fit: contain;
-
-    display: block;
-}
-
-.event-card:hover .event-icon {
-    transform: scale(1.08) rotate(-4deg);
-
-    box-shadow:
-        0 15px 40px rgba(37, 99, 235, 0.30);
-}
-.event-small-title {
-    color: #155eef;
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: .12em;
-}
-
-.event-top h3 {
-    font-size: 2rem;
-    line-height: 1.1;
-    margin-top: 4px;
-}
-
-.event-description {
-    margin: 25px 0;
-    max-width: 720px;
-}
-
-
-/* EVENT FEATURES */
-
-.event-features {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.event-feature {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-
-    padding: 14px;
-
-    background: #f7f9fd;
-
-    border-radius: 14px;
-}
-
-.feature-circle {
-    width: 42px;
-    height: 42px;
-
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 12px;
-
-    font-size: 18px;
-}
-
-.blue-circle {
-    background: #e5efff;
-}
-
-.purple-circle {
-    background: #eee7ff;
-}
-
-.orange-circle {
-    background: #fff0df;
-}
-
-.green-circle {
-    background: #e3f8eb;
-}
-
-.event-feature small {
-    display: block;
-    font-size: 9px;
-    font-weight: 900;
-    color: #8791a5;
-    letter-spacing: .08em;
-}
-
-.event-feature strong {
-    display: block;
-    color: #102653;
-    font-size: 13px;
-}
-
-
-/* EVENT RIGHT */
-
-.event-side {
-    padding: 40px 32px;
+    border-radius: 19px;
 
     background:
         linear-gradient(
-            145deg,
-            #155eef,
-            #7347e8
+            135deg,
+            #DCEAFF,
+            #E7E0FF
         );
 
-    color: white;
+    border: 1px solid #BBD1F3;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    box-shadow:
+        0 12px 30px rgba(23,105,255,.15);
+
+    transition: .35s ease;
 }
 
-.limited-badge {
-    display: inline-block;
-    width: fit-content;
+.event-icon img {
+    width: 50px;
+    height: 50px;
 
-    background: rgba(255,255,255,.16);
+    object-fit: contain;
+}
 
-    border: 1px solid rgba(255,255,255,.3);
+.event-card:hover .event-icon {
+    transform:
+        translateY(-5px)
+        rotate(-5deg)
+        scale(1.05);
+}
 
-    padding: 7px 13px;
+.event-small-title {
+    display: block;
 
-    border-radius: 50px;
+    color: var(--blue) !important;
 
     font-size: 10px;
 
     font-weight: 900;
 
-    letter-spacing: .12em;
+    letter-spacing: 2px;
 
-    margin-bottom: 25px;
+    margin-bottom: 7px;
+}
+
+.event-top h3 {
+    margin: 0;
+
+    color: var(--navy) !important;
+
+    font-size: clamp(24px, 3vw, 32px);
+
+    line-height: 1.2;
+
+    font-weight: 900;
+}
+
+.event-description {
+    max-width: 720px;
+
+    margin: 28px 0;
+
+    color: #294E82 !important;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   EVENT FEATURES
+========================================================= */
+
+.event-features {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 14px;
+}
+
+.event-feature {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px;
+
+    border-radius: 13px;
+
+    background: #ffffff;
+
+    border: 1px solid #C8D9F3;
+
+    transition: .3s ease;
+}
+
+.event-feature:hover {
+    transform: translateY(-4px);
+
+    border-color: #7DA8EF;
+
+    box-shadow:
+        0 12px 30px rgba(23,105,255,.10);
+}
+
+.feature-circle {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 10px;
+
+    font-size: 17px;
+}
+
+.blue-circle {
+    background: #E3EEFF;
+}
+
+.purple-circle {
+    background: #EAE3FF;
+}
+
+.orange-circle {
+    background: #FFF0DF;
+}
+
+.green-circle {
+    background: #E3F8EB;
+}
+
+.event-feature small {
+    display: block;
+
+    color: #5273A3 !important;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 3px;
+}
+
+.event-feature strong {
+    display: block;
+
+    color: var(--navy) !important;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   EVENT SIDE
+========================================================= */
+
+.event-side {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 45px 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #071A3D,
+            #0B2A62,
+            #123D91
+        );
+
+    border-left:
+        1px solid rgba(112,162,255,.20);
 }
 
 .event-price {
+    text-align: center;
+
+    padding-bottom: 25px;
+
     margin-bottom: 25px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.15);
 }
 
 .event-price span {
     display: block;
-    font-size: 13px;
-    opacity: .8;
+
+    color: #AFC4E6 !important;
+
+    font-size: 12px;
 }
 
 .event-price strong {
     display: block;
-    font-size: 3rem;
+
+    margin: 8px 0;
+
+    color: #ffffff !important;
+
+    font-size: 45px;
+
     line-height: 1;
-    margin: 5px 0;
+
+    font-weight: 900;
 }
 
 .event-price small {
-    opacity: .8;
+    color: #AFC4E6 !important;
+
+    font-size: 10px;
 }
 
+
+/* =========================================================
+   EVENT BENEFITS
+========================================================= */
+
 .event-benefits {
-    display: grid;
+    display: flex;
+
+    flex-direction: column;
+
     gap: 13px;
+
     margin-bottom: 28px;
 }
 
 .event-benefits div {
     display: flex;
-    gap: 10px;
+
     align-items: center;
 
-    font-size: 13px;
+    gap: 10px;
+
+    color: #E8F0FF !important;
+
+    font-size: 12px;
 }
 
 .event-benefits span {
@@ -494,246 +988,100 @@
     height: 22px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    background: rgba(255,255,255,.18);
-
     border-radius: 50%;
+
+    background: rgba(112,162,255,.18);
+
+    color: #70A2FF !important;
+
+    font-weight: 900;
 }
+
+
+/* =========================================================
+   REGISTER
+========================================================= */
 
 .event-register {
     display: flex;
-    justify-content: space-between;
+
     align-items: center;
 
-    background: white;
-    color: #12377d;
+    justify-content: center;
 
-    padding: 14px 18px;
+    gap: 10px;
 
-    border-radius: 12px;
+    width: 100%;
 
-    font-weight: 900;
+    padding: 14px 20px;
 
-    transition: .25s;
-}
-
-.event-register:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0,0,0,.18);
-}
-
-
-/* ================= LEARNING ================= */
-
-.learning-section {
-    background: #f7f9fd;
-}
-
-.feature-card {
-    position: relative;
-    overflow: hidden;
-    transition: .25s;
-}
-
-.feature-card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 20px 45px rgba(6,32,77,.12);
-}
-
-.colorful-blue {
-    border-top: 5px solid #155eef;
-}
-
-.colorful-purple {
-    border-top: 5px solid #7b4dff;
-}
-
-.colorful-orange {
-    border-top: 5px solid #ff9d42;
-}
-
-.feature-card a {
-    font-weight: 900;
-    color: #155eef;
-}
-
-
-/* ================= HOME CTA ================= */
-
-.home-cta {
-    padding: 70px 0;
+    border-radius: 11px;
 
     background:
         linear-gradient(
             135deg,
-            #155eef,
-            #6939db
+            #1769FF,
+            #7657FF
+        );
+
+    color: #ffffff !important;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 12px 30px rgba(23,105,255,.30);
+
+    transition: .3s ease;
+}
+
+.event-register:hover {
+    color: #ffffff !important;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 20px 40px rgba(23,105,255,.40);
+}
+
+.event-register span {
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   LEARNING SECTION
+========================================================= */
+
+.learning-section {
+    padding: 90px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #F4F8FF
         );
 }
 
-.cta-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-}
 
-.cta-content span {
-    color: #d8e5ff;
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: .15em;
-}
-
-.cta-content h2 {
-    color: white;
-    margin: 8px 0;
-}
-
-.cta-content p {
-    color: #dbe6ff;
-}
-
-.cta-button {
-    flex-shrink: 0;
-
-    background: white;
-
-    color: #12377d;
-
-    padding: 15px 25px;
-
-    border-radius: 12px;
-
-    font-weight: 900;
-
-    transition: .25s;
-}
-
-.cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(0,0,0,.2);
-}
-
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 900px) {
-
-    .hero-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-visual {
-        min-height: 370px;
-    }
-
-    .event-card {
-        grid-template-columns: 1fr;
-    }
-
-    .event-side {
-        padding: 35px;
-    }
-
-    .cta-content {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-}
-
-
-@media (max-width: 600px) {
-
-    .hero {
-        padding: 55px 0;
-    }
-
-    .hero-highlights {
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-
-    .hero-highlights div {
-        padding: 0 15px;
-    }
-
-    .hero-visual {
-        min-height: 310px;
-    }
-
-    .code-window {
-        width: 90%;
-    }
-
-    .floating-card {
-        transform: scale(.8);
-    }
-
-    .card-one {
-        left: -15px;
-    }
-
-    .card-two {
-        right: -15px;
-    }
-
-    .event-main {
-        padding: 25px;
-    }
-
-    .event-side {
-        padding: 28px 25px;
-    }
-
-    .event-features {
-        grid-template-columns: 1fr;
-    }
-
-    .event-top h3 {
-        font-size: 1.5rem;
-    }
-
-    .event-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 30px;
-    }
-
-}
-/* =====================================================
-   ATTRACTIVE COURSES SECTION
-===================================================== */
-
-.learning-section {
-    position: relative;
-    padding: 100px 0;
-
-    background:
-        radial-gradient(
-            circle at 10% 20%,
-            rgba(23, 105, 255, 0.12),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 90% 80%,
-            rgba(118, 87, 255, 0.12),
-            transparent 30%
-        ),
-        #081F43;
-
-    overflow: hidden;
-}
-
-
-/* ================= SECTION HEADING ================= */
+/* =========================================================
+   COURSES HEADING
+========================================================= */
 
 .courses-heading {
-    max-width: 750px;
-    margin: 0 auto 55px;
+    max-width: 760px;
+
+    margin: 0 auto 50px;
+
     text-align: center;
 }
 
@@ -744,24 +1092,25 @@
 
     border-radius: 50px;
 
-    background: rgba(47, 128, 255, 0.12);
+    background: #EAF2FF;
 
-    border: 1px solid rgba(47, 128, 255, 0.25);
+    border: 1px solid #C5D9F5;
 
-    color: #5FA0FF;
+    color: var(--blue) !important;
 
-    font-size: 11px;
+    font-size: 10px;
+
     font-weight: 900;
 
-    letter-spacing: 0.15em;
+    letter-spacing: .15em;
 
-    margin-bottom: 18px;
+    margin-bottom: 16px;
 }
 
 .courses-heading h2 {
     margin: 0;
 
-    color: #ffffff;
+    color: var(--navy) !important;
 
     font-size: clamp(34px, 4vw, 50px);
 
@@ -776,28 +1125,32 @@
     background:
         linear-gradient(
             90deg,
-            #3D8BFF,
-            #8B6CFF
+            #1769FF,
+            #7657FF
         );
 
     -webkit-background-clip: text;
+    background-clip: text;
+
     -webkit-text-fill-color: transparent;
 }
 
 .courses-heading p {
-    margin: 20px auto 0;
-
     max-width: 650px;
 
-    color: #B8C7E6;
+    margin: 18px auto 0;
+
+    color: #426494 !important;
+
+    font-size: 14px;
 
     line-height: 1.8;
-
-    font-size: 15px;
 }
 
 
-/* ================= COURSE GRID ================= */
+/* =========================================================
+   COURSE GRID
+========================================================= */
 
 .learning-section .feature-grid {
     display: grid;
@@ -805,136 +1158,162 @@
     grid-template-columns:
         repeat(3, 1fr);
 
-    gap: 24px;
+    gap: 22px;
 }
 
 
-/* ================= COURSE CARD ================= */
+/* =========================================================
+   COURSE CARDS
+   STRONG BLUE CONTRAST
+========================================================= */
 
 .learning-section .feature-card {
     position: relative;
 
-    padding: 35px 30px 30px;
-
-    min-height: 390px;
+    min-height: 350px;
 
     display: flex;
+
     flex-direction: column;
+
+    padding: 30px;
+
+    overflow: hidden;
+
+    border-radius: 22px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,0.08),
-            rgba(255,255,255,0.035)
+            #0B1F4B,
+            #103574
         );
 
-    border: 1px solid rgba(255,255,255,0.10);
+    border: 1px solid rgba(77,141,255,.35);
 
-    border-radius: 24px;
-
-    overflow: hidden;
+    box-shadow:
+        0 18px 45px rgba(7,26,61,.16);
 
     transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease,
-        border-color 0.35s ease;
+        transform .4s ease,
+        box-shadow .4s ease,
+        border-color .4s ease;
 }
-
-
-/* Background glow */
 
 .learning-section .feature-card::before {
     content: "";
 
     position: absolute;
 
-    width: 180px;
-    height: 180px;
+    width: 220px;
+    height: 220px;
+
+    right: -110px;
+    top: -110px;
 
     border-radius: 50%;
 
-    top: -90px;
-    right: -70px;
+    opacity: .25;
 
-    opacity: 0.15;
-
-    transition: 0.35s ease;
+    transition: .5s ease;
 }
 
 .course-java::before {
-    background: #FF9D42;
+    background: #F28B30;
 }
 
 .course-python::before {
-    background: #3D8BFF;
+    background: #4D8DFF;
 }
 
 .course-fullstack::before {
-    background: #8B6CFF;
+    background: #9A7BFF;
 }
 
+.learning-section .feature-card::after {
+    content: "";
 
-/* Hover */
+    position: absolute;
+
+    width: 100%;
+    height: 4px;
+
+    top: 0;
+    left: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #1769FF,
+            #7657FF
+        );
+}
 
 .learning-section .feature-card:hover {
     transform: translateY(-10px);
 
-    box-shadow:
-        0 25px 60px rgba(0,0,0,0.28);
+    border-color: #5D92ED;
 
-    border-color: rgba(255,255,255,0.22);
+    box-shadow:
+        0 30px 65px rgba(7,26,61,.25),
+        0 0 35px rgba(23,105,255,.12);
 }
 
 .learning-section .feature-card:hover::before {
-    transform: scale(1.4);
-    opacity: 0.22;
+    transform: scale(1.5);
+
+    opacity: .35;
 }
 
 
-/* ================= NUMBER ================= */
+/* =========================================================
+   COURSE ICON
+========================================================= */
 
-.course-number {
-    position: absolute;
+.learning-section .feature-card .event-icon,
+.learning-section .feature-card .feature-icon {
+    position: relative;
 
-    top: 22px;
-    right: 25px;
+    z-index: 2;
 
-    color: rgba(255,255,255,0.20);
-
-    font-size: 13px;
-
-    font-weight: 900;
-
-    letter-spacing: 0.1em;
-}
-
-
-/* ================= ICON ================= */
-
-.learning-section .feature-icon {
     width: 65px;
     height: 65px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    border-radius: 18px;
-
-    font-size: 32px;
+    border-radius: 17px;
 
     margin-bottom: 25px;
 
     box-shadow:
-        0 10px 25px rgba(0,0,0,0.15);
+        0 12px 30px rgba(0,0,0,.18);
+
+    transition: .35s ease;
+}
+
+.learning-section .feature-card .event-icon img {
+    width: 48px;
+    height: 48px;
+}
+
+.learning-section .feature-card:hover .event-icon,
+.learning-section .feature-card:hover .feature-icon {
+    transform:
+        translateY(-5px)
+        rotate(-5deg)
+        scale(1.07);
 }
 
 .java-icon {
     background:
         linear-gradient(
             135deg,
-            #fff0df,
-            #ffd3a8
+            #FFF0DF,
+            #FFD3A8
         );
 }
 
@@ -942,8 +1321,8 @@
     background:
         linear-gradient(
             135deg,
-            #e6f1ff,
-            #c9dcff
+            #DCEAFF,
+            #BFD7FF
         );
 }
 
@@ -951,85 +1330,56 @@
     background:
         linear-gradient(
             135deg,
-            #eee7ff,
-            #d7c9ff
+            #E8E0FF,
+            #D2C2FF
         );
 }
 
 
-/* ================= LABEL ================= */
-
-.course-label {
-    color: #679DFF;
-
-    font-size: 10px;
-
-    font-weight: 900;
-
-    letter-spacing: 0.14em;
-
-    margin-bottom: 8px;
-}
-
-
-/* ================= TITLE ================= */
+/* =========================================================
+   COURSE TEXT
+========================================================= */
 
 .learning-section .feature-card h3 {
+    position: relative;
+
+    z-index: 2;
+
     margin: 0 0 14px;
 
-    color: #ffffff;
+    color: #ffffff !important;
 
-    font-size: 24px;
+    font-size: 23px;
 
     line-height: 1.2;
+
+    font-weight: 900;
 }
-
-
-/* ================= DESCRIPTION ================= */
 
 .learning-section .feature-card p {
+    position: relative;
+
+    z-index: 2;
+
     margin: 0;
 
-    color: #B8C7E6;
+    color: #C7D8F3 !important;
 
-    line-height: 1.7;
+    font-size: 13px;
 
-    font-size: 14px;
+    line-height: 1.8;
 }
 
 
-/* ================= TAGS ================= */
-
-.course-tags {
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 7px;
-
-    margin-top: 22px;
-}
-
-.course-tags span {
-    padding: 6px 10px;
-
-    border-radius: 6px;
-
-    background: rgba(255,255,255,0.07);
-
-    border: 1px solid rgba(255,255,255,0.08);
-
-    color: #C9D8F4;
-
-    font-size: 10px;
-
-    font-weight: 700;
-}
-
-
-/* ================= LINK ================= */
+/* =========================================================
+   COURSE LINK
+========================================================= */
 
 .course-link {
+    position: relative;
+
+    z-index: 3;
+
     display: flex;
 
     align-items: center;
@@ -1037,124 +1387,230 @@
     justify-content: space-between;
 
     margin-top: auto;
-    padding-top: 25px;
 
-    color: #5FA0FF;
+    padding-top: 22px;
 
-    font-size: 13px;
+    color: #70A2FF !important;
+
+    border-top:
+        1px solid rgba(255,255,255,.13);
+
+    text-decoration: none;
+
+    font-size: 12px;
 
     font-weight: 900;
 
-    border-top: 1px solid rgba(255,255,255,0.08);
+    transition: .3s ease;
+}
+
+.course-link:hover {
+    color: #ffffff !important;
 }
 
 .course-link span {
     font-size: 20px;
 
-    transition: transform 0.25s ease;
+    transition: .3s ease;
 }
 
 .course-link:hover span {
-    transform: translateX(6px);
-}
-
-
-/* ================= INDIVIDUAL COLORS ================= */
-
-.course-java {
-    border-top: 3px solid #FF9D42 !important;
-}
-
-.course-python {
-    border-top: 3px solid #3D8BFF !important;
-}
-
-.course-fullstack {
-    border-top: 3px solid #8B6CFF !important;
-}
-
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 950px) {
-
-    .learning-section .feature-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-}
-
-@media (max-width: 650px) {
-
-    .learning-section {
-        padding: 70px 0;
-    }
-
-    .learning-section .feature-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .learning-section .feature-card {
-        min-height: auto;
-    }
-
-}
-
-.upcoming-section {
-    position: relative;
-    overflow: hidden;
-    padding: 90px 20px;
-    background:
-        radial-gradient(
-            circle at 10% 20%,
-            rgba(37, 99, 235, 0.12),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 90% 80%,
-            rgba(112, 72, 232, 0.12),
-            transparent 32%
-        ),
-        #061936;
+    transform: translateX(7px);
 }
 
 
 /* =========================================================
-   BACKGROUND DECORATION
+   CARD TOP COLORS
 ========================================================= */
 
-.upcoming-section::before {
-    content: "";
-    position: absolute;
-
-    width: 420px;
-    height: 420px;
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(91, 145, 255, 0.08);
-
-    top: -220px;
-    right: -150px;
-
-    animation: rotateCircle 18s linear infinite;
+.course-java {
+    border-top: 4px solid #F28B30 !important;
 }
 
-.upcoming-section::after {
+.course-python {
+    border-top: 4px solid #4D8DFF !important;
+}
+
+.course-fullstack {
+    border-top: 4px solid #7657FF !important;
+}
+
+
+/* =========================================================
+   HOME CTA
+========================================================= */
+
+.home-cta {
+    padding: 75px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #071A3D,
+            #0B1F4B,
+            #123D91
+        );
+}
+
+.home-cta::before {
     content: "";
+
     position: absolute;
 
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    height: 500px;
 
     border-radius: 50%;
 
-    border: 1px solid rgba(112, 72, 232, 0.08);
+    border:
+        1px solid rgba(112,162,255,.12);
 
-    bottom: -170px;
-    left: -120px;
+    right: -220px;
+    top: -250px;
+}
 
-    animation: rotateCircleReverse 20s linear infinite;
+.cta-content {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.cta-content span {
+    color: #70A2FF !important;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: .15em;
+}
+
+.cta-content h2 {
+    margin: 8px 0;
+
+    color: #ffffff !important;
+
+    font-size: clamp(26px, 4vw, 38px);
+
+    font-weight: 900;
+}
+
+.cta-content p {
+    margin: 0;
+
+    color: #C7D8F3 !important;
+
+    font-size: 14px;
+}
+
+.cta-button {
+    flex-shrink: 0;
+
+    padding: 14px 25px;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: var(--navy) !important;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    transition: .3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-4px);
+
+    color: var(--blue) !important;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.25);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+@keyframes heroTextReveal {
+    from {
+        opacity: 0;
+        transform: translateX(-35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes visualReveal {
+    from {
+        opacity: 0;
+        transform: translateX(35px) scale(.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes codeFloat {
+    0%,100% {
+        transform:
+            rotate(2deg)
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            rotate(2deg)
+            translateY(-10px);
+    }
+}
+
+@keyframes floatingCard {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes dotPulse {
+    0%,100% {
+        transform: scale(1);
+
+        opacity: .7;
+    }
+
+    50% {
+        transform: scale(1.35);
+
+        opacity: 1;
+    }
 }
 
 @keyframes rotateCircle {
@@ -1179,703 +1635,20 @@
 
 
 /* =========================================================
-   SECTION HEADING
-========================================================= */
-
-.event-heading {
-    position: relative;
-    z-index: 2;
-
-    text-align: center;
-
-    margin-bottom: 45px;
-
-    animation: fadeDown 0.9s ease both;
-}
-
-.event-heading .cohort-title {
-    color: #ffffff;
-
-    font-size: clamp(30px, 4vw, 44px);
-
-    font-weight: 800;
-
-    margin: 0 0 12px;
-
-    letter-spacing: -0.5px;
-}
-
-.event-heading p {
-    color: #9eb4d5;
-
-    font-size: 16px;
-
-    margin: 0;
-
-    animation: fadeUp 1s ease 0.2s both;
-}
-
-
-/* =========================================================
-   EVENT CARD
-========================================================= */
-
-.event-card {
-    position: relative;
-    z-index: 2;
-
-    display: grid;
-
-    grid-template-columns: 1.5fr 0.8fr;
-
-    max-width: 1100px;
-
-    margin: auto;
-
-    border-radius: 28px;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(19, 48, 92, 0.96),
-            rgba(10, 29, 62, 0.98)
-        );
-
-    border: 1px solid rgba(91, 145, 255, 0.20);
-
-    box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.30),
-        0 0 0 rgba(37, 99, 235, 0);
-
-    animation:
-        cardAppear 0.9s ease 0.25s both,
-        cardFloat 5s ease-in-out 1.5s infinite;
-
-    transition: all 0.4s ease;
-}
-
-
-/* Glowing border */
-
-.event-card::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    border-radius: 28px;
-
-    padding: 1px;
-
-    background:
-        linear-gradient(
-            120deg,
-            rgba(37, 99, 235, 0.5),
-            transparent 35%,
-            rgba(112, 72, 232, 0.5)
-        );
-
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-
-    -webkit-mask-composite: xor;
-
-    mask-composite: exclude;
-
-    pointer-events: none;
-
-    opacity: 0.5;
-
-    transition: opacity 0.4s ease;
-}
-
-.event-card:hover::before {
-    opacity: 1;
-}
-
-.event-card:hover {
-    transform: translateY(-8px);
-
-    box-shadow:
-        0 35px 80px rgba(0, 0, 0, 0.38),
-        0 0 45px rgba(37, 99, 235, 0.10);
-}
-
-
-/* =========================================================
-   LEFT SIDE
-========================================================= */
-
-.event-main {
-    padding: 45px;
-}
-
-
-/* Top area */
-
-.event-top {
-    display: flex;
-
-    align-items: center;
-
-    gap: 20px;
-
-    animation: fadeUp 0.8s ease 0.5s both;
-}
-
-
-/* Python icon */
-
-.event-icon {
-    width: 72px;
-    height: 72px;
-
-    flex-shrink: 0;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 20px;
-
-    font-size: 38px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(37, 99, 235, 0.25),
-            rgba(112, 72, 232, 0.30)
-        );
-
-    border: 1px solid rgba(112, 150, 255, 0.25);
-
-    box-shadow:
-        0 10px 30px rgba(37, 99, 235, 0.18);
-
-    animation:
-        iconFloat 3s ease-in-out infinite;
-
-    transition: all 0.35s ease;
-}
-
-.event-card:hover .event-icon {
-    transform: scale(1.08) rotate(-5deg);
-
-    box-shadow:
-        0 15px 40px rgba(37, 99, 235, 0.30);
-}
-
-
-@keyframes iconFloat {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-6px);
-    }
-}
-
-
-/* Academy small title */
-
-.event-small-title {
-    display: block;
-
-    color: #70a2ff;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 7px;
-}
-
-
-/* Course title */
-
-.event-top h3 {
-    color: #ffffff;
-
-    font-size: clamp(24px, 3vw, 32px);
-
-    line-height: 1.2;
-
-    margin: 0;
-
-    font-weight: 800;
-}
-
-
-/* =========================================================
-   DESCRIPTION
-========================================================= */
-
-.event-description {
-    max-width: 720px;
-
-    color: #aebfd9;
-
-    font-size: 15px;
-
-    line-height: 1.8;
-
-    margin: 30px 0;
-
-    animation: fadeUp 0.8s ease 0.65s both;
-}
-
-
-/* =========================================================
-   FEATURES
-========================================================= */
-
-.event-features {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 18px;
-
-    animation: fadeUp 0.8s ease 0.8s both;
-}
-
-.event-feature {
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    padding: 14px;
-
-    border-radius: 14px;
-
-    background: rgba(255,255,255,0.035);
-
-    border: 1px solid rgba(255,255,255,0.06);
-
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease,
-        border-color 0.3s ease;
-}
-
-.event-feature:hover {
-    transform: translateY(-4px);
-
-    background: rgba(37, 99, 235, 0.08);
-
-    border-color: rgba(91, 145, 255, 0.25);
-}
-
-
-/* Feature circles */
-
-.feature-circle {
-    width: 42px;
-    height: 42px;
-
-    flex-shrink: 0;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 12px;
-
-    font-size: 18px;
-}
-
-
-/* Different colors */
-
-.blue-circle {
-    background: rgba(37, 99, 235, 0.15);
-}
-
-.purple-circle {
-    background: rgba(112, 72, 232, 0.15);
-}
-
-.orange-circle {
-    background: rgba(255, 145, 60, 0.14);
-}
-
-.green-circle {
-    background: rgba(50, 190, 120, 0.14);
-}
-
-
-.event-feature small {
-    display: block;
-
-    color: #718bb0;
-
-    font-size: 9px;
-
-    font-weight: 700;
-
-    letter-spacing: 1px;
-
-    margin-bottom: 3px;
-}
-
-.event-feature strong {
-    display: block;
-
-    color: #e3edff;
-
-    font-size: 13px;
-}
-
-
-/* =========================================================
-   RIGHT SIDE
-========================================================= */
-
-.event-side {
-    position: relative;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    padding: 45px 35px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(37, 99, 235, 0.12),
-            rgba(112, 72, 232, 0.15)
-        );
-
-    border-left: 1px solid rgba(255,255,255,0.07);
-
-    animation: fadeRight 0.9s ease 0.55s both;
-}
-
-
-/* =========================================================
-   PRICE
-========================================================= */
-
-.event-price {
-    text-align: center;
-
-    padding-bottom: 25px;
-
-    margin-bottom: 25px;
-
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.event-price span {
-    display: block;
-
-    color: #91a9cb;
-
-    font-size: 13px;
-
-    margin-bottom: 5px;
-}
-
-.event-price strong {
-    display: block;
-
-    color: #ffffff;
-
-    font-size: 42px;
-
-    line-height: 1;
-
-    font-weight: 850;
-
-    background:
-        linear-gradient(
-            90deg,
-            #5ba2ff,
-            #a16bff
-        );
-
-    -webkit-background-clip: text;
-
-    background-clip: text;
-
-    color: transparent;
-}
-
-.event-price small {
-    display: block;
-
-    color: #718bb0;
-
-    font-size: 11px;
-
-    margin-top: 8px;
-}
-
-
-/* =========================================================
-   BENEFITS
-========================================================= */
-
-.event-benefits {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 13px;
-
-    margin-bottom: 28px;
-}
-
-.event-benefits div {
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    color: #c9d8ef;
-
-    font-size: 13px;
-
-    transition: transform 0.25s ease;
-}
-
-.event-benefits div:hover {
-    transform: translateX(5px);
-}
-
-.event-benefits span {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    width: 22px;
-    height: 22px;
-
-    border-radius: 50%;
-
-    background: rgba(37, 99, 235, 0.15);
-
-    color: #70a2ff;
-
-    font-size: 12px;
-
-    font-weight: bold;
-}
-
-
-/* =========================================================
-   REGISTER BUTTON
-========================================================= */
-
-.event-register {
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 12px;
-
-    width: 100%;
-
-    padding: 14px 20px;
-
-    border-radius: 11px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #1769ff,
-            #7657ff
-        );
-
-    color: #ffffff;
-
-    text-decoration: none;
-
-    font-size: 14px;
-
-    font-weight: 800;
-
-    box-shadow:
-        0 10px 25px rgba(37, 99, 235, 0.25);
-
-    overflow: hidden;
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-
-/* Shine animation */
-
-.event-register::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: -120%;
-
-    width: 80%;
-    height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,0.25),
-            transparent
-        );
-
-    transform: skewX(-20deg);
-
-    animation: buttonShine 3.5s ease-in-out infinite;
-}
-
-@keyframes buttonShine {
-
-    0% {
-        left: -120%;
-    }
-
-    45%,
-    100% {
-        left: 140%;
-    }
-}
-
-.event-register span {
-    position: relative;
-
-    font-size: 18px;
-
-    transition: transform 0.3s ease;
-}
-
-.event-register:hover {
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 15px 35px rgba(37, 99, 235, 0.40);
-}
-
-.event-register:hover span {
-    transform: translateX(5px);
-}
-
-
-/* =========================================================
-   ANIMATIONS
-========================================================= */
-
-@keyframes cardAppear {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(35px)
-            scale(0.97);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-
-@keyframes cardFloat {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-4px);
-    }
-}
-
-
-@keyframes fadeUp {
-
-    from {
-        opacity: 0;
-
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform: translateY(0);
-    }
-}
-
-
-@keyframes fadeDown {
-
-    from {
-        opacity: 0;
-
-        transform: translateY(-20px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform: translateY(0);
-    }
-}
-
-
-@keyframes fadeRight {
-
-    from {
-        opacity: 0;
-
-        transform: translateX(25px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform: translateX(0);
-    }
-}
-
-
-/* =========================================================
    RESPONSIVE
 ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+    .hero-visual {
+        min-height: 370px;
+    }
 
     .event-card {
         grid-template-columns: 1fr;
@@ -1884,13 +1657,64 @@
     .event-side {
         border-left: none;
 
-        border-top: 1px solid rgba(255,255,255,0.07);
+        border-top:
+            1px solid rgba(112,162,255,.20);
     }
 
+    .learning-section .feature-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
+
+    .hero {
+        padding: 60px 0;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero-highlights {
+        flex-wrap: wrap;
+
+        gap: 18px;
+    }
+
+    .hero-highlights div {
+        padding: 0 15px;
+    }
+
+    .hero-visual {
+        min-height: 300px;
+    }
+
+    .code-window {
+        width: 90%;
+
+        min-height: 280px;
+    }
+
+    .code-content {
+        padding: 25px 20px;
+
+        font-size: 12px;
+    }
+
+    .floating-card {
+        transform: scale(.78);
+    }
+
+    .card-one {
+        left: -20px;
+    }
+
+    .card-two {
+        right: -20px;
+    }
 
     .upcoming-section {
         padding: 65px 18px;
@@ -1909,84 +1733,192 @@
     }
 
     .event-icon {
-        width: 58px;
-        height: 58px;
+        width: 60px;
+        height: 60px;
+    }
 
-        font-size: 30px;
-
-        border-radius: 16px;
+    .event-icon img {
+        width: 42px;
+        height: 42px;
     }
 
     .event-top h3 {
-        font-size: 23px;
+        font-size: 22px;
     }
 
     .event-features {
         grid-template-columns: 1fr;
     }
 
-    .event-card {
-        border-radius: 22px;
+    .learning-section {
+        padding: 70px 0;
     }
 
+    .learning-section .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .learning-section .feature-card {
+        min-height: 320px;
+    }
+
+    .cta-content {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .hero-primary,
+    .hero-secondary {
+        width: 100%;
+    }
+
+    .hero-highlights div {
+        width: 100%;
+
+        padding: 0;
+
+        border-left: none;
+    }
+
+    .floating-card {
+        display: none;
+    }
+
+    .event-card {
+        border-radius: 20px;
+    }
+
+    .event-main {
+        padding: 25px 18px;
+    }
+
+    .event-side {
+        padding: 28px 18px;
+    }
+
+    .event-price strong {
+        font-size: 40px;
+    }
+
+    .learning-section .feature-card {
+        padding: 28px 24px;
+    }
 }
 
 
 /* =========================================================
-   ACCESSIBILITY
+   REDUCED MOTION
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
-    .upcoming-section::before,
-    .upcoming-section::after,
-    .event-card,
-    .event-icon,
-    .event-register::before {
+    *,
+    *::before,
+    *::after {
         animation: none !important;
+
+        transition: none !important;
+
+        scroll-behavior: auto !important;
+    }
+}
+
+/* =========================================================
+   JAVA PAGE STYLE - SCROLL REVEAL ANIMATION
+========================================================= */
+
+.event-heading,
+.event-card,
+.learning-section .feature-card,
+.cta-content {
+    opacity: 0;
+    transform: translateY(45px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.event-heading.show,
+.event-card.show,
+.learning-section .feature-card.show,
+.cta-content.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* STAGGER COURSE CARDS */
+
+.learning-section .feature-card:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.learning-section .feature-card:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.learning-section .feature-card:nth-child(3) {
+    transition-delay: 0.25s;
+}
+
+
+/* EVENT CARD */
+
+.event-card {
+    transition-delay: 0.1s;
+}
+
+
+/* CTA */
+
+.cta-content {
+    transition-delay: 0.1s;
+}
+
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .event-heading,
+    .event-card,
+    .learning-section .feature-card,
+    .cta-content {
+        opacity: 1;
+        transform: none;
+        transition: none;
     }
 
-    .event-card {
-        transform: none !important;
-    }
 }
 
-.cohort-title {
-    text-align: center;
-    font-size: clamp(24px, 6vw, 44px);
-    font-weight: 800;
-    line-height: 1.2;
-    margin: 0 0 12px;
-    color:#ffffff;
-}
-
-.cohort-title span {
-    display: block;
-
-    background: linear-gradient(
-        90deg,
-        #1769ff,
-        #7657ff
-    );
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
 </style>
 
 
-<!-- ================= UPCOMING EVENT ================= -->
+<!-- =========================================================
+     UPCOMING COHORT
+========================================================= -->
 
-<section class="upcoming-section">
+<section class="upcoming-section"
+         id="cohort">
 
     <div class="container">
 
-        <div class="section-head event-heading">
+        <div class="event-heading">
 
             <h2 class="cohort-title">
-    <span>Applications Open for Our Next Cohort</span>
-          </h2>
+                <span>
+                    Applications Open for Our Next Cohort
+                </span>
+            </h2>
 
             <p>
                 Start Your Python Learning Journey
@@ -1997,6 +1929,7 @@
 
         <div class="event-card">
 
+
             <!-- LEFT -->
 
             <div class="event-main">
@@ -2004,11 +1937,16 @@
                 <div class="event-top">
 
                     <div class="event-icon">
-                        <img src="{% static 'academy/images/python-logo.webp' %}"
-                         alt="Python">
+
+                        <img
+                            src="{% static 'academy/images/python-logo.webp' %}"
+                            alt="Python">
+
                     </div>
 
+
                     <div>
+
                         <span class="event-small-title">
                             ALPHASTACK ACADEMY
                         </span>
@@ -2017,66 +1955,106 @@
                             Python Training &<br>
                             Certification Program
                         </h3>
+
                     </div>
 
                 </div>
 
 
                 <p class="event-description">
-                    A practical Python program designed to help learners
-                    understand programming concepts, practice coding,
-                    complete assignments and apply concepts through
-                    hands-on exercises.
+
+                    A practical Python program designed to help
+                    learners understand programming concepts,
+                    practice coding, complete assignments and
+                    apply concepts through hands-on exercises.
+
                 </p>
 
 
                 <div class="event-features">
 
+
                     <div class="event-feature">
+
                         <div class="feature-circle blue-circle">
                             📅
                         </div>
 
                         <div>
-                            <small>STARTS</small>
-                            <strong>August 24, 2026</strong>
+
+                            <small>
+                                STARTS
+                            </small>
+
+                            <strong>
+                                August 24, 2026
+                            </strong>
+
                         </div>
+
                     </div>
 
 
                     <div class="event-feature">
+
                         <div class="feature-circle purple-circle">
                             ⏰
                         </div>
 
                         <div>
-                            <small>TIME</small>
-                            <strong>7:00 PM – 8:00 PM</strong>
+
+                            <small>
+                                TIME
+                            </small>
+
+                            <strong>
+                                7:00 PM – 8:00 PM
+                            </strong>
+
                         </div>
+
                     </div>
 
 
                     <div class="event-feature">
+
                         <div class="feature-circle orange-circle">
                             💻
                         </div>
 
                         <div>
-                            <small>MODE</small>
-                            <strong>Online</strong>
+
+                            <small>
+                                MODE
+                            </small>
+
+                            <strong>
+                                Online
+                            </strong>
+
                         </div>
+
                     </div>
 
 
                     <div class="event-feature">
+
                         <div class="feature-circle green-circle">
                             🎓
                         </div>
 
                         <div>
-                            <small>DURATION</small>
-                            <strong>4 Weeks</strong>
+
+                            <small>
+                                DURATION
+                            </small>
+
+                            <strong>
+                                4 Weeks
+                            </strong>
+
                         </div>
+
                     </div>
 
                 </div>
@@ -2088,13 +2066,20 @@
 
             <div class="event-side">
 
+
                 <div class="event-price">
 
-                    <span>Course Fee</span>
+                    <span>
+                        Course Fee
+                    </span>
 
-                    <strong style="color:white;">₹1000</strong>
+                    <strong>
+                        ₹1000
+                    </strong>
 
-                    <small>Complete Program</small>
+                    <small>
+                        Complete Program
+                    </small>
 
                 </div>
 
@@ -2124,10 +2109,12 @@
                 </div>
 
 
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1e_Bzkf9hVVdv5FlhC56zLCGGxJVM3JwVpkJgscR5pJJkew/viewform?usp=header"
-                   class="event-register">
+                <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSd1e_Bzkf9hVVdv5FlhC56zLCGGxJVM3JwVpkJgscR5pJJkew/viewform?usp=header"
+                    class="event-register">
 
                     Register Now
+
                     <span>→</span>
 
                 </a>
@@ -2141,14 +2128,16 @@
 </section>
 
 
+<!-- =========================================================
+     PROGRAMS
+========================================================= -->
 
-<!-- ================= ABOUT / LEARNING ================= -->
-
-<section class="learning-section">
+<section class="learning-section"
+         id="programs">
 
     <div class="container">
 
-        <!-- Section Heading -->
+
         <div class="courses-heading">
 
             <span class="courses-label">
@@ -2161,29 +2150,34 @@
             </h2>
 
             <p>
-                Practical, structured training designed to help you
-                learn programming, practice consistently, and build
-                real-world development skills.
+                Practical, structured training designed to help
+                you learn programming, practice consistently and
+                build real-world development skills.
             </p>
 
         </div>
 
 
-        <!-- Course Cards -->
         <div class="feature-grid">
 
 
             <!-- JAVA -->
+
             <div class="feature-card course-java">
 
-                <div class="event-icon">
-                        <img src="{% static 'academy/images/java-logo.png' %}"
-                         alt="java">
-                    </div>
+                <div class="event-icon java-icon">
+
+                    <img
+                        src="{% static 'academy/images/java-logo.png' %}"
+                        alt="Java">
+
+                </div>
+
 
                 <h3>
                     Java Programming
                 </h3>
+
 
                 <p>
                     Build a strong foundation in Java programming
@@ -2191,26 +2185,37 @@
                     and practical exercises.
                 </p>
 
-                <a href="{% url 'academy:java' %}"
-                   class="course-link">
+
+                <a
+                    href="{% url 'academy:java' %}"
+                    class="course-link">
+
                     View Course
+
                     <span>→</span>
+
                 </a>
 
             </div>
 
 
             <!-- PYTHON -->
+
             <div class="feature-card course-python">
 
-                <div class="event-icon">
-                    <img src="{% static 'academy/images/python-logo.webp' %}"
-                         alt="Python">
+                <div class="event-icon python-icon">
+
+                    <img
+                        src="{% static 'academy/images/python-logo.webp' %}"
+                        alt="Python">
+
                 </div>
+
 
                 <h3>
                     Python Programming
                 </h3>
+
 
                 <p>
                     Learn Python from the fundamentals through
@@ -2218,25 +2223,35 @@
                     problem-solving.
                 </p>
 
-                <a href="{% url 'academy:python' %}"
-                   class="course-link">
+
+                <a
+                    href="{% url 'academy:python' %}"
+                    class="course-link">
+
                     View Course
+
                     <span>→</span>
+
                 </a>
 
             </div>
 
 
             <!-- FULL STACK -->
+
             <div class="feature-card course-fullstack">
 
                 <div class="feature-icon fullstack-icon">
-                    💻
+                    <img
+                        src="{% static 'academy/images/full-stack.png' %}"
+                        alt="Full Stack Development">
                 </div>
+
 
                 <h3>
                     Full Stack Development
                 </h3>
+
 
                 <p>
                     Learn frontend and backend development and
@@ -2244,20 +2259,30 @@
                     practical projects.
                 </p>
 
-                <a href="{% url 'academy:python_fullstack' %}"
-                   class="course-link">
+
+                <a
+                    href="{% url 'academy:python_fullstack' %}"
+                    class="course-link">
+
                     View Course
+
                     <span>→</span>
+
                 </a>
 
             </div>
+
 
         </div>
 
     </div>
 
 </section>
-<!-- ================= CALL TO ACTION ================= -->
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
 
 <section class="home-cta">
 
@@ -2266,7 +2291,10 @@
         <div class="cta-content">
 
             <div>
-                <span>READY TO START?</span>
+
+                <span>
+                    READY TO START?
+                </span>
 
                 <h2>
                     Build Your Programming Skills Today.
@@ -2275,12 +2303,63 @@
                 <p>
                     Join AlphaStack Academy and start learning.
                 </p>
+
             </div>
+
+
+            <a
+                href="#cohort"
+                class="cta-button">
+
+                Join the Next Cohort →
+
+            </a>
 
         </div>
 
     </div>
 
 </section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const animatedElements = document.querySelectorAll(
+        ".event-heading, .event-card, .learning-section .feature-card, .cta-content"
+    );
+
+    const observer = new IntersectionObserver(
+        function (entries) {
+
+            entries.forEach(function (entry) {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("show");
+
+                } else {
+
+                    entry.target.classList.remove("show");
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        }
+    );
+
+    animatedElements.forEach(function (element) {
+
+        observer.observe(element);
+
+    });
+
+});
+</script>
+
 
 {% endblock %}

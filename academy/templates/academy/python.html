@@ -5,47 +5,98 @@
 
 {% block content %}
 
-<!-- =========================================
-     PYTHON COURSE HERO
-========================================= -->
 <style>
-    /* =====================================================
-   PYTHON COURSE PAGE
-   ALPHASTACK ACADEMY
-===================================================== */
 
+/* =========================================================
+   ALPHASTACK PYTHON COURSE
+   PREMIUM NAVY + WHITE + ELECTRIC BLUE THEME
+========================================================= */
 
-/* =====================================================
-   COURSE HERO
-===================================================== */
+html {
+    scroll-behavior: smooth;
+}
 
-.course-hero {
+body {
+    background: #ffffff;
+    color: #0B1F4B;
+}
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+.course-hero,
+.program-section,
+.syllabus-section {
     position: relative;
     overflow: hidden;
-    padding: 75px 0;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.course-hero {
+    padding: 65px 0;
+
     background:
         radial-gradient(
-            circle at 85% 20%,
-            rgba(54, 103, 255, 0.30),
-            transparent 35%
+            circle at 85% 15%,
+            rgba(37,117,255,.25),
+            transparent 28%
         ),
         radial-gradient(
             circle at 15% 90%,
-            rgba(126, 72, 255, 0.20),
-            transparent 35%
+            rgba(118,76,255,.20),
+            transparent 30%
         ),
-        #061a3d;
+        linear-gradient(
+            135deg,
+            #061936,
+            #0B2D68 55%,
+            #092052
+        );
 }
 
 .course-hero::before {
     content: "";
+
     position: absolute;
-    width: 450px;
-    height: 450px;
+
+    width: 500px;
+    height: 500px;
+
     border-radius: 50%;
-    background: rgba(34, 101, 255, 0.12);
-    top: -250px;
-    right: -100px;
+
+    border: 1px solid rgba(100,160,255,.12);
+
+    top: -280px;
+    right: -160px;
+
+    animation: heroCircleFloat 7s ease-in-out infinite;
+}
+
+.course-hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(118,87,255,.12);
+
+    bottom: -220px;
+    left: -160px;
+
+    animation: heroCircleFloatReverse 8s ease-in-out infinite;
 }
 
 .course-hero-content {
@@ -54,18 +105,24 @@
 
     display: flex;
     align-items: center;
-    gap: 35px;
 
-    max-width: 1000px;
+    gap: 40px;
+
+    max-width: 1050px;
     margin: auto;
+
+    padding: 15px 0;
+
+    animation: heroContentReveal .9s ease forwards;
 }
 
+/* =========================================================
+   PYTHON ICON
+========================================================= */
 
-/* Python Icon */
-
-.course-icon-large {
-    width: 150px;
-    height: 150px;
+.event-icon {
+    width: 145px;
+    height: 145px;
 
     flex-shrink: 0;
 
@@ -73,552 +130,242 @@
     align-items: center;
     justify-content: center;
 
-    border-radius: 35px;
+    border-radius: 28px;
 
-    font-size: 75px;
+    background:
+        linear-gradient(
+            145deg,
+            #123D91,
+            #1769FF
+        );
+
+    border: 1px solid rgba(112,162,255,.40);
 
     box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.25);
+        0 20px 50px rgba(0,0,0,.30),
+        0 0 35px rgba(23,105,255,.15);
+
+    animation:
+        iconFloat 4s ease-in-out infinite,
+        iconGlow 3s ease-in-out infinite alternate;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
 }
 
-.python-icon {
-    background: linear-gradient(
-        135deg,
-        #ffd84d,
-        #4d7cff
-    );
+.event-icon img {
+    width: 120px;
+    height: 120px;
+
+    object-fit: contain;
+
+    display: block;
+
+    filter:
+        drop-shadow(
+            0 8px 15px
+            rgba(0,0,0,.20)
+        );
 }
 
+.course-hero-content:hover .event-icon {
+    transform:
+        translateY(-5px)
+        rotate(-3deg)
+        scale(1.04);
 
-/* Hero Text */
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.35),
+        0 0 45px rgba(23,105,255,.30);
+}
+
+/* =========================================================
+   HERO TEXT
+========================================================= */
 
 .course-hero-text {
     flex: 1;
 }
 
-.course-hero .eyebrow {
-    color: #69a0ff;
-    font-weight: 800;
-    font-size: 13px;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-}
-
 .course-hero h1 {
     margin: 0 0 18px;
 
-    color: #ffffff;
+    color: #ffffff !important;
 
-    font-size: clamp(38px, 5vw, 62px);
+    font-size: clamp(38px,5vw,60px);
 
-    line-height: 1.08;
+    line-height: 1.05;
 
-    font-weight: 850;
+    font-weight: 900;
+
+    letter-spacing: -.8px;
+
+    animation: titleReveal 1s ease .15s both;
 }
 
-.course-hero h1 span {
+.course-hero h1::after {
+    content: "";
+
     display: block;
 
-    background: linear-gradient(
-        90deg,
-        #3d8cff,
-        #8b5cf6
-    );
+    width: 90px;
+    height: 4px;
 
-    -webkit-background-clip: text;
-    background-clip: text;
+    margin-top: 18px;
 
-    color: transparent;
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #1769FF,
+            #7657FF
+        );
+
+    animation: lineExpand 1s ease .7s both;
 }
 
 .course-hero p {
     max-width: 720px;
 
-    color: #c5d5f2;
+    color: #D3E2FF !important;
 
-    font-size: 17px;
+    font-size: 16px;
+
     line-height: 1.8;
 
-    margin-bottom: 28px;
+    margin: 0 0 26px;
+
+    animation: textReveal 1s ease .35s both;
 }
 
-
-/* Hero Buttons */
+/* =========================================================
+   BUTTON
+========================================================= */
 
 .course-hero-buttons {
     display: flex;
+
     flex-wrap: wrap;
-    gap: 14px;
+
+    gap: 12px;
+
+    animation: textReveal 1s ease .5s both;
 }
 
 .btn-outline-light {
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
 
-    padding: 12px 22px;
+    padding: 13px 25px;
 
-    border: 1px solid rgba(255,255,255,0.4);
-    border-radius: 9px;
+    border: none !important;
 
-    color: #ffffff;
+    border-radius: 10px;
 
-    font-weight: 700;
+    background:
+        linear-gradient(
+            135deg,
+            #1769FF,
+            #7657FF
+        );
 
-    transition: 0.3s ease;
+    color: #ffffff !important;
+
+    font-weight: 800;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 12px 30px rgba(23,105,255,.28);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
 }
 
 .btn-outline-light:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: #ffffff;
-}
+    color: #ffffff !important;
 
-
-/* =====================================================
-   COURSE OVERVIEW
-===================================================== */
-
-.python-overview-section {
-    background:
-        radial-gradient(
-            circle at 80% 20%,
-            rgba(45, 100, 255, 0.10),
-            transparent 30%
-        ),
-        #071b3d;
-}
-
-.course-overview {
-    max-width: 1050px;
-    margin: auto;
-}
-
-.course-overview .tag {
-    display: inline-block;
-
-    color: #5c94ff;
-
-    font-size: 13px;
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 12px;
-}
-
-.course-overview h2 {
-    margin: 0 0 15px;
-
-    color: #ffffff;
-
-    font-size: 38px;
-    font-weight: 800;
-}
-
-.course-overview > p {
-    max-width: 760px;
-
-    color: #b9c8e2;
-
-    font-size: 16px;
-    line-height: 1.8;
-
-    margin-bottom: 30px;
-}
-
-
-/* Overview Grid */
-
-.overview-grid {
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 15px;
-}
-
-.overview-item {
-    min-height: 100px;
-
-    padding: 20px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
-
-    background: rgba(255,255,255,0.055);
-
-    border: 1px solid rgba(100,145,230,0.18);
-
-    border-radius: 15px;
-
-    transition: 0.3s ease;
-}
-
-.overview-item:hover {
-    transform: translateY(-5px);
-
-    background: rgba(51,105,255,0.12);
-
-    border-color: rgba(91,145,255,0.45);
+    transform: translateY(-4px);
 
     box-shadow:
-        0 15px 35px rgba(0,0,0,0.15);
+        0 18px 40px rgba(23,105,255,.40);
 }
 
-.overview-icon {
-    width: 34px;
-    height: 34px;
-
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: linear-gradient(
-        135deg,
-        #1769ff,
-        #7b4dff
-    );
-
-    color: #ffffff;
-
-    font-size: 15px;
-    font-weight: 800;
-}
-
-.overview-item span {
-    color: #e6efff;
-
-    font-size: 14px;
-    font-weight: 650;
-
-    line-height: 1.4;
-}
-
-
-/* =====================================================
+/* =========================================================
    PROGRAM SECTION
-===================================================== */
+========================================================= */
 
 .program-section {
-    background: #061936;
+    padding: 65px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #F3F7FF
+        );
 }
 
 .program-layout {
     display: grid;
 
-    grid-template-columns: 1.35fr 0.75fr;
+    grid-template-columns: 1fr;
 
-    gap: 60px;
+    max-width: 1050px;
 
-    align-items: start;
+    margin: auto;
 }
 
-.program-content .tag {
-    color: #6098ff;
-
-    font-size: 13px;
-    font-weight: 800;
-
-    letter-spacing: 2px;
+.program-content {
+    width: 100%;
 }
 
-.program-content h2 {
-    margin: 12px 0 15px;
-
-    color: #ffffff;
-
-    font-size: 38px;
-    line-height: 1.2;
-}
-
-.program-content > p {
-    max-width: 680px;
-
-    color: #b8c8e2;
-
-    font-size: 16px;
-    line-height: 1.8;
-
-    margin-bottom: 30px;
-}
-
-
-/* Benefits */
-
-.benefit-list {
-    display: flex;
-    flex-direction: column;
-
-    gap: 18px;
-}
-
-.benefit-item {
-    display: flex;
-
-    gap: 18px;
-
-    padding: 20px;
-
-    border-radius: 15px;
-
-    background: rgba(255,255,255,0.045);
-
-    border: 1px solid rgba(100,145,230,0.15);
-}
-
-.benefit-number {
-    width: 48px;
-    height: 48px;
-
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 12px;
-
-    background: linear-gradient(
-        135deg,
-        #1769ff,
-        #744cff
-    );
-
-    color: #ffffff;
-
-    font-size: 13px;
-    font-weight: 800;
-}
-
-.benefit-item h3 {
-    margin: 2px 0 7px;
-
-    color: #ffffff;
-
-    font-size: 18px;
-}
-
-.benefit-item p {
-    margin: 0;
-
-    color: #9fb2d2;
-
-    line-height: 1.6;
-
-    font-size: 14px;
-}
-
-
-/* =====================================================
-   PROGRAM DETAILS CARD
-===================================================== */
+/* =========================================================
+   PROGRAM CARD
+========================================================= */
 
 .program-card {
-    padding: 30px;
+    position: relative;
 
-    border-radius: 22px;
+    width: 100%;
+
+    padding: 30px 35px;
+
+    border-radius: 24px;
 
     background:
         linear-gradient(
-            145deg,
-            rgba(32,80,170,0.55),
-            rgba(36,50,130,0.50)
+            135deg,
+            #0B1F4B,
+            #123D91 65%,
+            #17499F
         );
 
-    border: 1px solid rgba(105,150,255,0.25);
+    border: 1px solid rgba(37,117,255,.45);
 
     box-shadow:
-        0 25px 60px rgba(0,0,0,0.25);
-
-    position: sticky;
-    top: 90px;
-}
-
-.program-card-top {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    margin-bottom: 18px;
-}
-
-.program-card-top > span {
-    color: #69a0ff;
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-}
-
-.python-small-icon {
-    width: 42px;
-    height: 42px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 12px;
-
-    background: rgba(255,255,255,0.1);
-
-    font-size: 22px;
-}
-
-.program-card h3 {
-    margin: 0 0 25px;
-
-    color: #ffffff;
-
-    font-size: 25px;
-}
-
-
-/* Detail Rows */
-
-.program-detail-row {
-    display: flex;
-
-    align-items: center;
-
-    gap: 14px;
-
-    padding: 15px 0;
-
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.detail-icon {
-    width: 40px;
-    height: 40px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 10px;
-
-    background: rgba(255,255,255,0.08);
-
-    font-size: 18px;
-}
-
-.program-detail-row small {
-    display: block;
-
-    color: #9fb5d8;
-
-    font-size: 12px;
-
-    margin-bottom: 3px;
-}
-
-.program-detail-row strong {
-    display: block;
-
-    color: #ffffff;
-
-    font-size: 15px;
-}
-
-
-/* Register */
-
-.program-register-btn {
-    width: 100%;
-
-    margin-top: 25px;
-
-    text-align: center;
-}
-
-
-/* =====================================================
-   SYLLABUS
-===================================================== */
-
-.syllabus-section {
-    background:
-        radial-gradient(
-            circle at 10% 50%,
-            rgba(63,91,255,0.10),
-            transparent 30%
-        ),
-        #071d40;
-}
-
-.syllabus-heading {
-    text-align: center;
-
-    max-width: 750px;
-
-    margin: 0 auto 45px;
-}
-
-.syllabus-heading .tag {
-    color: #6098ff;
-
-    font-size: 13px;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-}
-
-.syllabus-heading h2 {
-    color: #ffffff;
-
-    font-size: 40px;
-
-    margin: 12px 0;
-}
-
-.syllabus-heading p {
-    color: #aebfdc;
-
-    line-height: 1.7;
-
-    font-size: 16px;
-}
-
-
-/* Syllabus Grid */
-
-.syllabus-grid {
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 22px;
-}
-
-.syllabus-card {
-    position: relative;
-
-    padding: 28px;
-
-    border-radius: 20px;
-
-    background: rgba(255,255,255,0.055);
-
-    border: 1px solid rgba(100,145,230,0.18);
+        0 25px 60px rgba(11,31,75,.20);
 
     overflow: hidden;
 
-    transition: 0.3s ease;
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
 }
 
-.syllabus-card::before {
+.program-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 30px 70px rgba(11,31,75,.28);
+}
+
+.program-card::before {
     content: "";
 
     position: absolute;
@@ -629,336 +376,1140 @@
     width: 100%;
     height: 4px;
 
-    background: linear-gradient(
-        90deg,
-        #2575ff,
-        #824cff
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #1769FF,
+            #7657FF,
+            #5BB6FF
+        );
+
+    background-size: 200% 100%;
+
+    animation: gradientMove 4s linear infinite;
 }
 
-.syllabus-card:hover {
-    transform: translateY(-6px);
+.program-card::after {
+    content: "";
 
-    background: rgba(255,255,255,0.075);
+    position: absolute;
 
-    border-color: rgba(100,145,255,0.35);
+    width: 280px;
+    height: 280px;
 
-    box-shadow:
-        0 20px 45px rgba(0,0,0,0.20);
+    border-radius: 50%;
+
+    right: -140px;
+    top: -150px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(112,162,255,.18),
+            transparent 70%
+        );
+
+    pointer-events: none;
+
+    animation: blobFloat 6s ease-in-out infinite;
 }
 
+.program-card-top {
+    position: relative;
+    z-index: 2;
 
-/* Different Accent Lines */
-
-.syllabus-purple::before {
-    background: linear-gradient(
-        90deg,
-        #7c4dff,
-        #c34dff
-    );
-}
-
-.syllabus-cyan::before {
-    background: linear-gradient(
-        90deg,
-        #00b8ff,
-        #3c7dff
-    );
-}
-
-.syllabus-pink::before {
-    background: linear-gradient(
-        90deg,
-        #ff4fa3,
-        #8b5cf6
-    );
-}
-
-
-/* Week */
-
-.week-top {
     display: flex;
 
     align-items: center;
+    justify-content: space-between;
 
-    gap: 12px;
-
-    margin-bottom: 18px;
+    margin-bottom: 10px;
 }
 
-.week-number {
-    width: 45px;
-    height: 45px;
+.program-card-top > span {
+    color: #72A9FF !important;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 11px;
 
-    border-radius: 12px;
-
-    background: linear-gradient(
-        135deg,
-        #246bff,
-        #724cff
-    );
-
-    color: #ffffff;
-
-    font-weight: 800;
-
-    font-size: 14px;
-}
-
-.week-top span {
-    color: #6499ff;
-
-    font-size: 12px;
-
-    font-weight: 800;
+    font-weight: 900;
 
     letter-spacing: 2px;
 }
 
-.syllabus-card h3 {
-    margin: 0 0 10px;
+.program-card h3 {
+    position: relative;
+    z-index: 2;
+
+    margin: 0 0 22px;
+
+    color: #ffffff !important;
+
+    font-size: 27px;
+
+    font-weight: 900;
+}
+
+/* =========================================================
+   PROGRAM DETAILS
+========================================================= */
+
+.program-detail-row {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 14px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.12);
+
+    transition:
+        transform .25s ease,
+        padding-left .25s ease;
+}
+
+.program-detail-row:last-of-type {
+    border-bottom: none;
+}
+
+.program-detail-row:hover {
+    transform: translateX(6px);
+
+    padding-left: 5px;
+}
+
+.detail-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37,117,255,.30),
+            rgba(118,87,255,.25)
+        );
+
+    border:
+        1px solid rgba(112,162,255,.20);
 
     color: #ffffff;
 
-    font-size: 23px;
+    font-size: 18px;
+
+    transition:
+        transform .3s ease,
+        background .3s ease;
 }
 
-.syllabus-card > p {
-    color: #9eb1d1;
+.program-detail-row:hover .detail-icon {
+    transform: rotate(-5deg) scale(1.08);
 
-    line-height: 1.6;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37,117,255,.45),
+            rgba(118,87,255,.40)
+        );
+}
 
-    font-size: 14px;
+.program-detail-row small {
+    display: block;
 
-    margin-bottom: 20px;
+    color: #91B6ED !important;
+
+    font-size: 11px;
+
+    margin-bottom: 3px;
+
+    font-weight: 700;
+
+    letter-spacing: .5px;
+}
+
+.program-detail-row strong {
+    display: block;
+
+    color: #ffffff !important;
+
+    font-size: 15px;
+
+    font-weight: 800;
+}
+
+/* =========================================================
+   REGISTER BUTTON
+========================================================= */
+
+.program-register-btn {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding: 13px 20px;
+
+    text-align: center;
+
+    border: none !important;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1769FF,
+            #7657FF
+        ) !important;
+
+    color: #ffffff !important;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 12px 30px rgba(23,105,255,.28);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.program-register-btn:hover {
+    transform: translateY(-4px);
+
+    color: #ffffff !important;
+
+    box-shadow:
+        0 18px 40px rgba(23,105,255,.40);
+}
+
+/* =========================================================
+   PYTHON SYLLABUS SECTION
+   WHITE BACKGROUND + BLUE ANIMATED CARDS
+========================================================= */
+
+.syllabus-section {
+    position: relative;
+    padding: 60px 0 70px;
+
+    background:
+        radial-gradient(
+            circle at 0% 20%,
+            rgba(21, 94, 239, 0.07),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 100% 75%,
+            rgba(118, 87, 255, 0.07),
+            transparent 25%
+        ),
+        #ffffff;
+
+    color: #06204d;
+    overflow: hidden;
+}
+
+/* Decorative background glow */
+
+.syllabus-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    left: -180px;
+    top: 20%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(37, 117, 255, 0.10),
+            transparent 70%
+        );
+
+    animation: syllabusBlob 6s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+.syllabus-section::after {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    right: -150px;
+    bottom: 10%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(118, 87, 255, 0.10),
+            transparent 70%
+        );
+
+    animation: syllabusBlobReverse 7s ease-in-out infinite;
+
+    pointer-events: none;
 }
 
 
-/* Syllabus List */
+/* =========================================================
+   SYLLABUS HEADING
+========================================================= */
 
-.syllabus-card ul {
+.syllabus-heading {
+    position: relative;
+    z-index: 2;
+
+    max-width: 750px;
+
+    margin: 0 auto 40px;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform: translateY(35px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.syllabus-heading.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.syllabus-heading h2 {
+    margin: 0 0 12px;
+
+    color: #06204d !important;
+
+    font-size: 40px;
+
+    font-weight: 900;
+
+    letter-spacing: -0.5px;
+}
+
+.syllabus-heading p {
     margin: 0;
-    padding: 0;
 
-    list-style: none;
+    color: #173b73 !important;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   SYLLABUS GRID
+========================================================= */
+
+.syllabus-grid {
+    position: relative;
+    z-index: 2;
 
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        repeat(2, 1fr);
 
-    gap: 10px;
+    gap: 20px;
+
+    max-width: 1100px;
+
+    margin: auto;
 }
 
-.syllabus-card li {
+
+/* =========================================================
+   SYLLABUS CARD
+========================================================= */
+
+.syllabus-card {
     position: relative;
 
-    padding-left: 20px;
+    min-height: 270px;
 
-    color: #d4e0f5;
+    padding: 27px;
 
-    font-size: 14px;
+    border-radius: 20px;
 
-    line-height: 1.5;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #08275c 0%,
+            #0b397c 60%,
+            #0d468f 100%
+        );
+
+    border:
+        1px solid rgba(61, 139, 255, 0.40);
+
+    box-shadow:
+        0 12px 30px rgba(6, 32, 77, 0.18);
+
+    opacity: 0;
+
+    transform:
+        translateY(55px)
+        scale(0.94);
+
+    transition:
+        opacity 0.75s ease,
+        transform 0.45s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
 }
 
-.syllabus-card li::before {
-    content: "✓";
+
+/* When JavaScript adds .show */
+
+.syllabus-card.show {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =========================================================
+   STAGGERED ANIMATION
+========================================================= */
+
+.syllabus-card:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.syllabus-card:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.syllabus-card:nth-child(3) {
+    transition-delay: 0.25s;
+}
+
+.syllabus-card:nth-child(4) {
+    transition-delay: 0.35s;
+}
+
+
+/* =========================================================
+   CARD TOP ACCENT
+========================================================= */
+
+.syllabus-card::before {
+    content: "";
 
     position: absolute;
 
     left: 0;
     top: 0;
 
-    color: #5d96ff;
-
-    font-weight: 800;
-}
-
-
-/* =====================================================
-   MINI PROJECT
-===================================================== */
-
-.project-section {
-    background: #061936;
-}
-
-.project-box {
-    display: flex;
-
-    align-items: center;
-
-    gap: 30px;
-
-    padding: 40px;
-
-    border-radius: 24px;
+    width: 100%;
+    height: 4px;
 
     background:
         linear-gradient(
-            120deg,
-            rgba(26,82,190,0.55),
-            rgba(92,53,200,0.45)
+            90deg,
+            #3d8bff,
+            #7657ff
+        );
+}
+
+
+/* =========================================================
+   CARD GLOW CIRCLE
+========================================================= */
+
+.syllabus-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    right: -100px;
+    top: -100px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(118, 87, 255, 0.45),
+            transparent 70%
         );
 
-    border: 1px solid rgba(120,160,255,0.25);
+    transition:
+        transform 0.55s ease,
+        opacity 0.55s ease;
+}
+
+
+/* =========================================================
+   HOVER ANIMATION
+========================================================= */
+
+.syllabus-card:hover {
+    transform:
+        translateY(-10px)
+        scale(1.015);
+
+    border-color:
+        rgba(110, 176, 255, 0.75);
 
     box-shadow:
-        0 25px 60px rgba(0,0,0,0.20);
+        0 25px 55px rgba(6, 32, 77, 0.30),
+        0 0 30px rgba(37, 117, 255, 0.12);
 }
 
-.project-icon {
-    width: 90px;
-    height: 90px;
+.syllabus-card:hover::after {
+    transform: scale(1.5);
 
-    flex-shrink: 0;
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   CARD ACCENT COLORS
+========================================================= */
+
+.syllabus-blue::before {
+    background:
+        linear-gradient(
+            90deg,
+            #3d8bff,
+            #155eef
+        );
+}
+
+.syllabus-purple::before {
+    background:
+        linear-gradient(
+            90deg,
+            #7657ff,
+            #9b7cff
+        );
+}
+
+.syllabus-cyan::before {
+    background:
+        linear-gradient(
+            90deg,
+            #28c7d9,
+            #1597c8
+        );
+}
+
+.syllabus-pink::before {
+    background:
+        linear-gradient(
+            90deg,
+            #ff4fa3,
+            #7657ff
+        );
+}
+
+
+/* =========================================================
+   WEEK TOP
+========================================================= */
+
+.week-top {
+    position: relative;
+    z-index: 2;
 
     display: flex;
+
     align-items: center;
-    justify-content: center;
 
-    border-radius: 22px;
-
-    background: rgba(255,255,255,0.12);
-
-    font-size: 45px;
-}
-
-.project-content .tag {
-    color: #91b7ff;
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-}
-
-.project-content h2 {
-    color: #ffffff;
-
-    font-size: 30px;
-
-    margin: 10px 0;
-}
-
-.project-content p {
-    color: #d0dcf1;
-
-    font-size: 16px;
-
-    line-height: 1.7;
+    gap: 12px;
 
     margin-bottom: 20px;
 }
 
-.project-features {
-    display: flex;
+.week-number {
+    width: 46px;
+    height: 46px;
 
-    flex-wrap: wrap;
+    flex-shrink: 0;
 
-    gap: 10px;
-}
-
-.project-features span {
-    padding: 8px 13px;
-
-    border-radius: 20px;
-
-    background: rgba(255,255,255,0.10);
-
-    color: #e8efff;
-
-    font-size: 13px;
-
-    font-weight: 600;
-}
-
-
-/* =====================================================
-   FINAL CTA
-===================================================== */
-
-.course-cta-section {
-    background: #071b3d;
-}
-
-.course-cta {
     display: flex;
 
     align-items: center;
+    justify-content: center;
 
-    justify-content: space-between;
-
-    gap: 30px;
-
-    padding: 45px;
-
-    border-radius: 25px;
+    border-radius: 12px;
 
     background:
         linear-gradient(
-            120deg,
-            #1558d8,
-            #6546e8
+            135deg,
+            #ffffff,
+            #dceaff
         );
 
+    color: #06204d !important;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
     box-shadow:
-        0 25px 60px rgba(0,0,0,0.25);
+        0 8px 20px rgba(0, 0, 0, 0.18);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-.course-cta .tag {
-    color: #dce8ff;
 
-    font-size: 12px;
+/* Number animation */
 
-    font-weight: 800;
+.syllabus-card:hover .week-number {
+    transform:
+        rotate(-8deg)
+        scale(1.1);
 
-    letter-spacing: 2px;
+    box-shadow:
+        0 12px 25px rgba(61, 139, 255, 0.30);
 }
 
-.course-cta h2 {
-    color: #ffffff;
 
-    font-size: 32px;
+/* Week label */
 
-    margin: 10px 0;
+.week-top > span:not(.week-number) {
+    color: #79b5ff !important;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.12em;
 }
 
-.course-cta p {
-    color: #e0e9ff;
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+.syllabus-card h3 {
+    position: relative;
+    z-index: 2;
+
+    margin: 0 0 10px;
+
+    color: #ffffff !important;
+
+    font-size: 22px;
+
+    line-height: 1.3;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   CARD DESCRIPTION
+========================================================= */
+
+.syllabus-card > p {
+    position: relative;
+    z-index: 2;
+
+    margin: 0 0 20px;
+
+    color: #e5efff !important;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   SYLLABUS LIST
+========================================================= */
+
+.syllabus-card ul {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 9px;
 
     margin: 0;
 
-    line-height: 1.6;
+    padding: 0;
+
+    list-style: none;
 }
 
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
+/* =========================================================
+   TOPIC ITEM
+========================================================= */
 
-@media (max-width: 1000px) {
+.syllabus-card li {
+    position: relative;
 
-    .overview-grid {
-        grid-template-columns: repeat(2, 1fr);
+    padding:
+        8px
+        10px
+        8px
+        28px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(255, 255, 255, 0.11);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    color: #ffffff !important;
+
+    font-size: 13px;
+
+    line-height: 1.4;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+/* Topic hover */
+
+.syllabus-card li:hover {
+    transform: translateX(5px);
+
+    background:
+        rgba(255, 255, 255, 0.20);
+
+    border-color:
+        rgba(255, 255, 255, 0.35);
+}
+
+
+/* Check icon */
+
+.syllabus-card li::before {
+    content: "✓";
+
+    position: absolute;
+
+    left: 10px;
+    top: 8px;
+
+    color: #79b5ff !important;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   DIFFERENT CARD GLOWS
+========================================================= */
+
+.syllabus-blue:hover {
+    box-shadow:
+        0 25px 55px rgba(6, 32, 77, 0.30),
+        0 0 35px rgba(61, 139, 255, 0.18);
+}
+
+.syllabus-purple:hover {
+    box-shadow:
+        0 25px 55px rgba(6, 32, 77, 0.30),
+        0 0 35px rgba(118, 87, 255, 0.20);
+}
+
+.syllabus-cyan:hover {
+    box-shadow:
+        0 25px 55px rgba(6, 32, 77, 0.30),
+        0 0 35px rgba(40, 199, 217, 0.18);
+}
+
+.syllabus-pink:hover {
+    box-shadow:
+        0 25px 55px rgba(6, 32, 77, 0.30),
+        0 0 35px rgba(255, 79, 163, 0.18);
+}
+
+
+/* =========================================================
+   BACKGROUND FLOATING ANIMATION
+========================================================= */
+
+@keyframes syllabusBlob {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
     }
 
-    .program-layout {
+    50% {
+        transform: translateY(35px) scale(1.12);
+    }
+}
+
+@keyframes syllabusBlobReverse {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-30px) scale(1.15);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .syllabus-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .syllabus-section {
+        padding: 50px 0 60px;
+    }
+
+    .syllabus-heading {
+        margin-bottom: 32px;
+    }
+
+    .syllabus-heading h2 {
+        font-size: 34px;
+    }
+
+    .syllabus-heading p {
+        font-size: 14px;
+    }
+
+    .syllabus-card {
+        min-height: auto;
+
+        padding: 24px;
+    }
+}
+
+
+@media (max-width: 560px) {
+
+    .syllabus-section {
+        padding: 45px 0 55px;
+    }
+
+    .syllabus-heading h2 {
+        font-size: 30px;
+    }
+
+    .syllabus-card {
+        padding: 22px 20px;
+    }
+
+    .syllabus-card h3 {
+        font-size: 20px;
+    }
+
+    .syllabus-card ul {
         grid-template-columns: 1fr;
     }
 
-    .program-card {
-        position: static;
+    .syllabus-card li {
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+
+        transition: none !important;
+    }
+
+    .syllabus-card,
+    .syllabus-heading {
+        opacity: 1;
+
+        transform: none;
+    }
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes iconFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+}
+
+@keyframes iconGlow {
+
+    from {
+        box-shadow:
+            0 20px 50px rgba(0,0,0,.30),
+            0 0 25px rgba(23,105,255,.12);
+    }
+
+    to {
+        box-shadow:
+            0 20px 50px rgba(0,0,0,.30),
+            0 0 45px rgba(23,105,255,.28);
+    }
+}
+
+@keyframes heroCircleFloat {
+
+    0%,
+    100% {
+        transform:
+            translate(0,0)
+            rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translate(-20px,25px)
+            rotate(8deg);
+    }
+}
+
+@keyframes heroCircleFloatReverse {
+
+    0%,
+    100% {
+        transform:
+            translate(0,0);
+    }
+
+    50% {
+        transform:
+            translate(25px,-20px);
+    }
+}
+
+@keyframes heroContentReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+@keyframes titleReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+@keyframes textReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 90px;
+        opacity: 1;
+    }
+}
+
+@keyframes lineExpandCenter {
+
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 70px;
+        opacity: 1;
+    }
+}
+
+@keyframes gradientMove {
+
+    0% {
+        background-position:
+            0% 50%;
+    }
+
+    50% {
+        background-position:
+            100% 50%;
+    }
+
+    100% {
+        background-position:
+            0% 50%;
+    }
+}
+
+@keyframes blobFloat {
+
+    0%,
+    100% {
+        transform:
+            translate(0,0);
+    }
+
+    50% {
+        transform:
+            translate(-25px,25px);
+    }
+}
+
+
+@keyframes headingReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+@keyframes syllabusReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(45px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .course-hero-content {
+        max-width: 900px;
     }
 
 }
 
+/* =========================================================
+   TABLET / MOBILE
+========================================================= */
 
 @media (max-width: 768px) {
 
@@ -970,15 +1521,20 @@
         flex-direction: column;
 
         align-items: flex-start;
+
+        gap: 25px;
     }
 
-    .course-icon-large {
-        width: 100px;
-        height: 100px;
+    .event-icon {
+        width: 110px;
+        height: 110px;
 
-        font-size: 50px;
+        border-radius: 22px;
+    }
 
-        border-radius: 25px;
+    .event-icon img {
+        width: 88px;
+        height: 88px;
     }
 
     .course-hero h1 {
@@ -989,128 +1545,81 @@
         font-size: 15px;
     }
 
-    .overview-grid {
-        grid-template-columns: 1fr;
+    .program-section {
+        padding: 50px 0;
     }
 
-    .course-overview h2 {
-        font-size: 30px;
+    .program-card {
+        padding: 26px 22px;
     }
 
-    .program-content h2 {
-        font-size: 30px;
+    .program-card h3 {
+        font-size: 24px;
     }
-
-    .syllabus-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .syllabus-card ul {
-        grid-template-columns: 1fr;
-    }
-
-    .syllabus-heading h2 {
-        font-size: 32px;
-    }
-
-    .project-box {
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        padding: 30px;
-    }
-
-    .course-cta {
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        padding: 30px;
-    }
-
-    .course-cta h2 {
-        font-size: 27px;
-    }
-
 }
 
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
+
+    .course-hero {
+        padding: 45px 0;
+    }
 
     .course-hero h1 {
         font-size: 32px;
     }
 
     .course-hero-buttons {
-        flex-direction: column;
-
         width: 100%;
     }
 
     .course-hero-buttons a {
         width: 100%;
-
-        text-align: center;
     }
 
-    .program-card {
-        padding: 22px;
+    .program-detail-row {
+        gap: 11px;
     }
 
-    .syllabus-card {
-        padding: 22px;
+    .detail-icon {
+        width: 38px;
+        height: 38px;
+
+        font-size: 16px;
     }
 
-    .project-icon {
-        width: 70px;
-        height: 70px;
-
-        font-size: 35px;
+    .program-detail-row strong {
+        font-size: 14px;
     }
 
 }
-.event-icon {
-    width: 200px;
-    height: 200px;
 
-    flex-shrink: 0;
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@media (prefers-reduced-motion: reduce) {
 
-    border-radius: 20px;
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
 
-    background: rgba(255, 255, 255, 0.06);
+        transition: none !important;
 
-    border: 1px solid rgba(112, 150, 255, 0.20);
-
-    box-shadow:
-        0 10px 30px rgba(37, 99, 235, 0.15);
-
-    animation: iconFloat 3s ease-in-out infinite;
-
-    transition: all 0.35s ease;
+        scroll-behavior: auto !important;
+    }
 }
-
-.event-icon img {
-    width: 180px;
-    height: 180px;
-
-    object-fit: contain;
-
-    display: block;
-}
-
-.event-card:hover .event-icon {
-    transform: scale(1.08) rotate(-4deg);
-
-    box-shadow:
-        0 15px 40px rgba(37, 99, 235, 0.30);
-}
-
 </style>
+
+
+<!-- =========================================
+     PYTHON COURSE HERO
+========================================= -->
+
 <section class="course-hero python-hero">
 
     <div class="container">
@@ -1118,8 +1627,10 @@
         <div class="course-hero-content">
 
             <div class="event-icon">
+
                 <img src="{% static 'academy/images/python-logo.webp' %}"
-                         alt="Python">
+                     alt="Python">
+
             </div>
 
             <div class="course-hero-text">
@@ -1151,7 +1662,6 @@
     </div>
 
 </section>
-
 
 
 <!-- =========================================
@@ -1466,4 +1976,43 @@
 
 </section>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const animatedElements = document.querySelectorAll(
+        ".syllabus-heading, .syllabus-card"
+    );
+
+    const observer = new IntersectionObserver(
+        function (entries) {
+
+            entries.forEach(function (entry) {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("show");
+
+                } else {
+
+                    entry.target.classList.remove("show");
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        }
+    );
+
+    animatedElements.forEach(function (element) {
+        observer.observe(element);
+    });
+
+});
+</script>
+
 {% endblock %}
+
