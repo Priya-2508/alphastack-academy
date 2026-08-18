@@ -1,308 +1,504 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}AlphaStack Academy{% endblock %}</title>
-    <meta name="description" content="AlphaStack Academy - Java and Python programming training.">
-    <link rel="stylesheet" href="{% static 'academy/css/style.css' %}">
-    {% block extra_css %}{% endblock %}
-<style>
+{% load static %} 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>{% block title %}AlphaStack Academy{% endblock %}</title> 
+    <meta name="description" content="AlphaStack Academy - Java and Python programming training."> 
+    <link rel="stylesheet" href="{% static 'academy/css/style.css' %}"> 
+    {% block extra_css %}{% endblock %} 
 
-/* =========================================================
+<style> 
+
+/* ========================================================= 
    ALPHASTACK - HEADER / NAVBAR
-   DO NOT CHANGE HTML
-========================================================= */
-
-.site-header {
-    width: 100%;
-    background: #ffffff;
-    border-bottom: 1px solid #e3eaf5;
-    position: relative;
-    z-index: 1000;
-    box-shadow: 0 4px 18px rgba(6, 32, 77, 0.06);
-}
-
-.nav-wrap {
-    min-height: 78px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-}
-
-/* Logo */
-
-.brand {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-}
-
-.brand img {
-    width: 170px;
-    height: auto;
-    max-height: 58px;
-    object-fit: contain;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-.brand:hover img {
-    transform: scale(1.03);
-}
+========================================================= */ 
+ 
+.site-header { 
+    width: 100%; 
+    background: #ffffff; 
+    border-bottom: 1px solid #e3eaf5; 
+    position: relative; 
+    z-index: 1000; 
+    box-shadow: 0 4px 18px rgba(6, 32, 77, 0.06); 
+} 
+ 
+.nav-wrap { 
+    min-height: 78px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 30px; 
+} 
+ 
+.brand { 
+    display: flex; 
+    align-items: center; 
+    flex-shrink: 0; 
+} 
+ 
+.brand img { 
+    width: 170px; 
+    height: auto; 
+    max-height: 58px; 
+    object-fit: contain; 
+    display: block; 
+    transition: transform 0.3s ease; 
+} 
+ 
+.brand:hover img { 
+    transform: scale(1.03); 
+} 
 
 
-/* =========================================================
+/* ========================================================= 
    NAVIGATION
-========================================================= */
-
-.main-nav {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 6px;
-}
-
-.main-nav a {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 14px;
-
-    color: #14213d;
-    font-size: 15px;
-    font-weight: 700;
-
-    border-radius: 9px;
-
-    transition:
-        color 0.25s ease,
-        background 0.25s ease,
-        transform 0.25s ease;
-}
-
-.main-nav a::after {
-    content: "";
-
-    position: absolute;
-    left: 14px;
-    right: 14px;
-    bottom: 4px;
-
-    height: 2px;
-
-    background: #155eef;
-
-    transform: scaleX(0);
-    transform-origin: center;
-
-    transition: transform 0.25s ease;
-}
-
-.main-nav a:hover {
-    color: #155eef;
-    background: #f5f8ff;
-    transform: translateY(-1px);
-}
-
-.main-nav a:hover::after {
-    transform: scaleX(1);
-}
+========================================================= */ 
+ 
+.main-nav { 
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-end; 
+    gap: 6px; 
+} 
+ 
+.main-nav a { 
+    position: relative; 
+    display: inline-flex; 
+    align-items: center; 
+    padding: 10px 14px; 
+    color: #14213d; 
+    font-size: 15px; 
+    font-weight: 700; 
+    border-radius: 9px; 
+    transition: 
+        color 0.25s ease, 
+        background 0.25s ease, 
+        transform 0.25s ease; 
+} 
+ 
+.main-nav a::after { 
+    content: ""; 
+    position: absolute; 
+    left: 14px; 
+    right: 14px; 
+    bottom: 4px; 
+    height: 2px; 
+    background: #155eef; 
+    transform: scaleX(0); 
+    transform-origin: center; 
+    transition: transform 0.25s ease; 
+} 
+ 
+.main-nav a:hover { 
+    color: #155eef; 
+    background: #f5f8ff; 
+    transform: translateY(-1px); 
+} 
+ 
+.main-nav a:hover::after { 
+    transform: scaleX(1); 
+} 
 
 
-/* =========================================================
+/* ========================================================= 
    MENU BUTTON
-========================================================= */
-
-.menu-toggle {
-    display: none;
-
-    width: 42px;
-    height: 42px;
-
-    border: 1px solid #dbe5f5;
-    border-radius: 10px;
-
-    background: #ffffff;
-    color: #06204d;
-
-    font-size: 21px;
-    cursor: pointer;
-
-    align-items: center;
-    justify-content: center;
-
-    transition:
-        background 0.25s ease,
-        color 0.25s ease,
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.menu-toggle:hover {
-    background: #eaf2ff;
-    color: #155eef;
-
-    transform: translateY(-2px);
-
-    box-shadow: 0 6px 15px rgba(6, 32, 77, 0.10);
-}
+========================================================= */ 
+ 
+.menu-toggle { 
+    display: none; 
+    width: 42px; 
+    height: 42px; 
+    border: 1px solid #dbe5f5; 
+    border-radius: 10px; 
+    background: #ffffff; 
+    color: #06204d; 
+    font-size: 21px; 
+    cursor: pointer; 
+    align-items: center; 
+    justify-content: center; 
+    transition: 
+        background 0.25s ease, 
+        color 0.25s ease, 
+        transform 0.25s ease, 
+        box-shadow 0.25s ease; 
+} 
+ 
+.menu-toggle:hover { 
+    background: #eaf2ff; 
+    color: #155eef; 
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 15px rgba(6, 32, 77, 0.10); 
+} 
 
 
-/* =========================================================
+/* ========================================================= 
    GENERAL WHITE PAGE
-========================================================= */
+========================================================= */ 
+ 
+body { 
+    background: #ffffff !important; 
+    color: #14213d; 
+} 
+ 
+main { 
+    background: #ffffff; 
+    min-height: 400px; 
+} 
 
-body {
-    background: #ffffff !important;
-    color: #14213d;
-}
 
-main {
-    background: #ffffff;
-    min-height: 400px;
-}
-
-
-/* =========================================================
+/* ========================================================= 
    COMMON SECTION IMPROVEMENT
-========================================================= */
+========================================================= */ 
+ 
+.section { 
+    background: #ffffff; 
+} 
+ 
+.light-section { 
+    background: #f7faff; 
+} 
+ 
+.section-head h2, 
+.section-head h3 { 
+    color: #06204d; 
+} 
+ 
+.section-head p { 
+    color: #667085; 
+} 
 
-.section {
-    background: #ffffff;
-}
 
-.light-section {
-    background: #f7faff;
-}
-
-.section-head h2,
-.section-head h3 {
-    color: #06204d;
-}
-
-.section-head p {
-    color: #667085;
-}
-
-
-/* =========================================================
+/* ========================================================= 
    COMMON CARDS
-========================================================= */
-
-.feature-card,
-.course-card,
-.benefit-card,
-.contact-card,
-.registration-form,
-.about-box {
-    background: #ffffff;
-
-    border: 1px solid #e1e9f6;
-
-    box-shadow:
-        0 8px 25px rgba(6, 32, 77, 0.06);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
-}
-
-.feature-card:hover,
-.course-card:hover,
-.benefit-card:hover,
-.contact-card:hover,
-.about-box:hover {
-    transform: translateY(-5px);
-
-    border-color: #b8cef2;
-
-    box-shadow:
-        0 18px 40px rgba(6, 32, 77, 0.11);
-}
+========================================================= */ 
+ 
+.feature-card, 
+.course-card, 
+.benefit-card, 
+.contact-card, 
+.registration-form, 
+.about-box { 
+    background: #ffffff; 
+    border: 1px solid #e1e9f6; 
+    box-shadow: 
+        0 8px 25px rgba(6, 32, 77, 0.06); 
+    transition: 
+        transform 0.3s ease, 
+        box-shadow 0.3s ease, 
+        border-color 0.3s ease; 
+} 
+ 
+.feature-card:hover, 
+.course-card:hover, 
+.benefit-card:hover, 
+.contact-card:hover, 
+.about-box:hover { 
+    transform: translateY(-5px); 
+    border-color: #b8cef2; 
+    box-shadow: 
+        0 18px 40px rgba(6, 32, 77, 0.11); 
+} 
 
 
-/* =========================================================
+/* ========================================================= 
    BUTTON ANIMATION
-========================================================= */
-
-.btn {
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-}
-
-.btn-primary:hover {
-    box-shadow:
-        0 10px 24px rgba(21, 94, 239, 0.22);
-}
+========================================================= */ 
+ 
+.btn { 
+    transition: 
+        transform 0.25s ease, 
+        box-shadow 0.25s ease, 
+        background 0.25s ease; 
+} 
+ 
+.btn:hover { 
+    transform: translateY(-2px); 
+} 
+ 
+.btn-primary:hover { 
+    box-shadow: 
+        0 10px 24px rgba(21, 94, 239, 0.22); 
+} 
 
 
 /* =========================================================
    FOOTER
+   UPDATED ONLY
+========================================================= */
+
+
+
+
+
+
+/* =========================================================
+   SIMPLE PAGE ANIMATION
+========================================================= */
+
+.hero, 
+.page-hero, 
+.section, 
+.java-course-page { 
+    animation: pageFadeIn 0.6s ease both; 
+} 
+ 
+@keyframes pageFadeIn { 
+ 
+    from { 
+        opacity: 0; 
+        transform: translateY(8px); 
+    } 
+ 
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
+ 
+} 
+
+
+/* =========================================================
+   IMAGE ANIMATION
+========================================================= */
+
+.hero-event-card img, 
+.event-banner img, 
+.event-poster-wrap img { 
+    transition: 
+        transform 0.4s ease; 
+} 
+ 
+.hero-event-card:hover img, 
+.event-banner:hover img, 
+.event-poster-wrap:hover img { 
+    transform: scale(1.015); 
+} 
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) { 
+ 
+    .nav-wrap { 
+        min-height: 72px; 
+    } 
+ 
+    .brand img { 
+        width: 160px; 
+        max-height: 55px; 
+    } 
+ 
+    .menu-toggle { 
+        display: inline-flex; 
+    } 
+ 
+    .main-nav { 
+        display: none; 
+ 
+        position: absolute; 
+ 
+        top: 72px; 
+        left: 0; 
+        right: 0; 
+ 
+        width: 100%; 
+ 
+        background: #ffffff; 
+ 
+        padding: 14px 5% 18px; 
+ 
+        border-top: 1px solid #e3eaf5; 
+        border-bottom: 1px solid #dbe5f5; 
+ 
+        box-shadow: 
+            0 15px 30px rgba(6, 32, 77, 0.10); 
+ 
+        flex-direction: column; 
+ 
+        align-items: stretch; 
+ 
+        gap: 4px; 
+ 
+        animation: menuSlide 0.25s ease; 
+    } 
+ 
+    .main-nav.show { 
+        display: flex; 
+    } 
+ 
+    .main-nav a { 
+        width: 100%; 
+ 
+        padding: 12px 14px; 
+ 
+        justify-content: flex-start; 
+    } 
+ 
+    .main-nav a::after { 
+        display: none; 
+    } 
+ 
+    .main-nav a:hover { 
+        transform: translateX(4px); 
+    } 
+
+} 
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) { 
+ 
+    .nav-wrap { 
+        min-height: 68px; 
+    } 
+ 
+    .brand img { 
+        width: 145px; 
+        max-height: 50px; 
+    } 
+ 
+    .menu-toggle { 
+        width: 40px; 
+        height: 40px; 
+    } 
+ 
+    .main-nav { 
+        top: 68px; 
+    } 
+
+
+
+
+} 
+
+
+/* =========================================================
+   MENU ANIMATION
+========================================================= */
+
+@keyframes menuSlide { 
+ 
+    from { 
+        opacity: 0; 
+        transform: translateY(-8px); 
+    } 
+ 
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
+ 
+} 
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) { 
+ 
+    *, 
+    *::before, 
+    *::after { 
+        animation-duration: 0.01ms !important; 
+        animation-iteration-count: 1 !important; 
+        transition-duration: 0.01ms !important; 
+        scroll-behavior: auto !important; 
+    } 
+ 
+} 
+
+/* =========================================================
+   ATTRACTIVE ALPHASTACK FOOTER
 ========================================================= */
 
 .site-footer {
     position: relative;
+    overflow: hidden;
 
     background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(77, 141, 255, 0.16),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(118, 87, 255, 0.12),
+            transparent 28%
+        ),
         linear-gradient(
             135deg,
-            #06204d 0%,
-            #0a2d68 55%,
-            #123d91 100%
+            #061735 0%,
+            #081f49 50%,
+            #0d3578 100%
         );
 
     color: #dce7ff;
 
-    padding: 55px 0 0;
-
-    overflow: hidden;
+    padding: 65px 0 0;
 }
 
 
-/* Decorative footer glow */
+/* =========================================================
+   TOP GLOW LINE
+========================================================= */
 
 .site-footer::before {
     content: "";
 
     position: absolute;
 
-    width: 280px;
-    height: 280px;
+    top: 0;
+    left: 0;
 
-    right: -120px;
-    top: -140px;
+    width: 100%;
+    height: 3px;
 
-    border-radius: 50%;
+    background:
+        linear-gradient(
+            90deg,
+            #1769ff,
+            #7657ff,
+            #4d8dff,
+            #1769ff
+        );
 
-    background: rgba(21, 94, 239, 0.12);
+    background-size: 200% auto;
 
-    pointer-events: none;
+    animation: footerGradient 5s linear infinite;
 }
+
+
+/* =========================================================
+   DECORATIVE CIRCLE
+========================================================= */
 
 .site-footer::after {
     content: "";
 
     position: absolute;
 
-    width: 220px;
-    height: 220px;
+    width: 420px;
+    height: 420px;
 
-    left: -120px;
-    bottom: -130px;
+    right: -220px;
+    bottom: -250px;
 
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(112, 162, 255, 0.10);
+
+    box-shadow:
+        0 0 0 50px rgba(112, 162, 255, 0.025),
+        0 0 0 100px rgba(112, 162, 255, 0.015);
 
     pointer-events: none;
 }
@@ -314,19 +510,20 @@ main {
 
 .footer-grid {
     position: relative;
-    z-index: 1;
+
+    z-index: 2;
 
     display: grid;
 
     grid-template-columns:
-        1.4fr
+        1.5fr
         1fr
         1fr
-        1.2fr;
+        1.25fr;
 
-    gap: 45px;
+    gap: 55px;
 
-    padding-bottom: 42px;
+    padding-bottom: 50px;
 }
 
 
@@ -335,60 +532,86 @@ main {
 ========================================================= */
 
 .footer-brand {
-    max-width: 320px;
+    max-width: 340px;
 }
+
 
 .footer-logo-box {
     display: inline-flex;
 
     align-items: center;
 
-    margin-bottom: 15px;
+    padding: 8px 12px;
 
-    padding: 7px 10px;
+    margin-bottom: 18px;
 
     background: #ffffff;
 
-    border-radius: 10px;
+    border-radius: 12px;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.16);
 
     transition:
         transform 0.3s ease,
         box-shadow 0.3s ease;
 }
 
+
 .footer-logo-box:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
 
     box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.15);
+        0 18px 40px rgba(0, 0, 0, 0.22);
 }
+
 
 .footer-logo-box img {
+    display: block;
+
     width: 180px;
     height: auto;
+
     max-height: 65px;
+
     object-fit: contain;
-    display: block;
 }
+
 
 .footer-tagline {
+    margin: 2px 0 10px;
+
     color: #ffffff !important;
 
-    font-size: 15px;
+    font-size: 17px;
 
-    font-weight: 800;
+    font-weight: 900;
 
-    margin: 4px 0 8px;
+    letter-spacing: 0.02em;
 }
 
+
 .footer-description {
-    color: #bfcdea !important;
+    margin: 0;
+
+    max-width: 310px;
+
+    color: #b8c9e8 !important;
 
     font-size: 14px;
 
-    line-height: 1.7;
+    line-height: 1.8;
+}
 
-    margin: 0;
+
+/* =========================================================
+   FOOTER COLUMNS
+========================================================= */
+
+.footer-column {
+    position: relative;
+
+    z-index: 2;
 }
 
 
@@ -397,18 +620,21 @@ main {
 ========================================================= */
 
 .site-footer h4 {
+    position: relative;
+
+    margin: 4px 0 22px;
+
+    padding-bottom: 11px;
+
     color: #ffffff !important;
 
     font-size: 16px;
 
-    font-weight: 800;
+    font-weight: 900;
 
-    margin: 5px 0 18px;
-
-    position: relative;
-
-    padding-bottom: 9px;
+    letter-spacing: 0.02em;
 }
+
 
 .site-footer h4::after {
     content: "";
@@ -418,120 +644,165 @@ main {
     left: 0;
     bottom: 0;
 
-    width: 32px;
-    height: 2px;
+    width: 38px;
+    height: 3px;
 
-    background: #4f8cff;
+    border-radius: 20px;
 
-    border-radius: 10px;
+    background:
+        linear-gradient(
+            90deg,
+            #4d8dff,
+            #7657ff
+        );
 }
 
 
 /* =========================================================
-   FOOTER LINKS
+   QUICK LINKS / COURSE LINKS
 ========================================================= */
 
-.footer-column a {
+.footer-column > a {
+    position: relative;
+
     display: block;
 
-    color: #c7d5f3 !important;
+    width: fit-content;
+
+    margin: 12px 0;
+
+    color: #c8d6ef !important;
 
     font-size: 14px;
 
-    margin: 10px 0;
+    font-weight: 500;
+
+    text-decoration: none;
 
     transition:
         color 0.25s ease,
         transform 0.25s ease;
 }
 
-.footer-column a:hover {
+
+.footer-column > a:hover {
     color: #ffffff !important;
 
-    transform: translateX(5px);
+    transform: translateX(6px);
 }
 
-.footer-column a span {
-    color: #5d94ff;
 
-    margin-right: 5px;
+.footer-column > a span {
+    display: inline-block;
 
-    transition: margin-right 0.25s ease;
+    margin-right: 7px;
+
+    color: #5f9aff;
+
+    transition:
+        transform 0.25s ease,
+        margin-right 0.25s ease;
 }
 
-.footer-column a:hover span {
-    margin-right: 9px;
+
+.footer-column > a:hover span {
+    transform: translateX(2px);
+
+    margin-right: 10px;
 }
 
 
 /* =========================================================
-   FOOTER CONTACT
+   GET IN TOUCH
+   NO BOX / NO ICON
 ========================================================= */
 
-.footer-contact-item {
+.footer-contact {
     display: flex;
+
+    flex-direction: column;
 
     align-items: flex-start;
-
-    gap: 12px;
-
-    margin-bottom: 18px;
 }
 
-.footer-icon {
-    width: 38px;
-    height: 38px;
 
-    flex-shrink: 0;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background: rgba(255, 255, 255, 0.09);
-
-    border: 1px solid rgba(255, 255, 255, 0.10);
-
-    border-radius: 10px;
-
-    font-size: 16px;
-
-    transition:
-        transform 0.25s ease,
-        background 0.25s ease;
+.footer-contact h4 {
+    margin-bottom: 20px;
 }
 
-.footer-contact-item:hover .footer-icon {
-    transform: translateY(-3px);
 
-    background: rgba(21, 94, 239, 0.35);
+/* Contact item without box */
+
+.footer-contact-item {
+    display: block;
+
+    width: 100%;
+
+    margin-bottom: 20px;
+
+    padding: 0;
+
+    background: transparent;
+
+    border: none;
+
+    box-shadow: none;
+
+    transition: none;
 }
+
+
+/* Remove icon completely */
+
+.footer-contact-item .footer-icon {
+    display: none;
+}
+
+
+/* Contact text */
 
 .footer-contact-item small {
     display: block;
 
-    color: #8fa8d3;
+    margin-bottom: 5px;
 
-    font-size: 11px;
+    color: #7fa4dd !important;
 
-    font-weight: 700;
+    font-size: 10px;
 
-    margin-bottom: 2px;
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
 }
+
 
 .footer-contact-item a {
     display: block;
 
+    margin: 0;
+
     color: #ffffff !important;
 
-    font-size: 13px;
+    font-size: 14px;
 
-    transition: color 0.25s ease;
+    font-weight: 600;
+
+    line-height: 1.5;
+
+    text-decoration: none;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
 }
+
 
 .footer-contact-item a:hover {
     color: #75a5ff !important;
+
+    transform: translateX(4px);
 }
 
 
@@ -542,68 +813,47 @@ main {
 .footer-bottom {
     position: relative;
 
-    z-index: 1;
+    z-index: 2;
+
+    padding: 20px 0;
 
     border-top:
-        1px solid rgba(255, 255, 255, 0.12);
-
-    padding: 18px 0;
+        1px solid rgba(255, 255, 255, 0.10);
 }
+
 
 .footer-bottom p {
-    color: #aebfdf !important;
-
-    font-size: 13px;
-
     margin: 0;
+
+    color: #9fb3d8 !important;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    text-align: center;
 }
+
 
 .footer-bottom strong {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 
 /* =========================================================
-   SIMPLE PAGE ANIMATION
+   FOOTER ANIMATION
 ========================================================= */
 
-.hero,
-.page-hero,
-.section,
-.java-course-page {
-    animation: pageFadeIn 0.6s ease both;
-}
+@keyframes footerGradient {
 
-@keyframes pageFadeIn {
-
-    from {
-        opacity: 0;
-        transform: translateY(8px);
+    0% {
+        background-position: 0% center;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    100% {
+        background-position: 200% center;
     }
 
-}
-
-
-/* =========================================================
-   IMAGE ANIMATION
-========================================================= */
-
-.hero-event-card img,
-.event-banner img,
-.event-poster-wrap img {
-    transition:
-        transform 0.4s ease;
-}
-
-.hero-event-card:hover img,
-.event-banner:hover img,
-.event-poster-wrap:hover img {
-    transform: scale(1.015);
 }
 
 
@@ -613,73 +863,23 @@ main {
 
 @media (max-width: 900px) {
 
-    .nav-wrap {
-        min-height: 72px;
-    }
-
-    .brand img {
-        width: 160px;
-        max-height: 55px;
-    }
-
-    .menu-toggle {
-        display: inline-flex;
-    }
-
-    .main-nav {
-        display: none;
-
-        position: absolute;
-
-        top: 72px;
-        left: 0;
-        right: 0;
-
-        width: 100%;
-
-        background: #ffffff;
-
-        padding: 14px 5% 18px;
-
-        border-top: 1px solid #e3eaf5;
-        border-bottom: 1px solid #dbe5f5;
-
-        box-shadow:
-            0 15px 30px rgba(6, 32, 77, 0.10);
-
-        flex-direction: column;
-
-        align-items: stretch;
-
-        gap: 4px;
-
-        animation: menuSlide 0.25s ease;
-    }
-
-    .main-nav.show {
-        display: flex;
-    }
-
-    .main-nav a {
-        width: 100%;
-
-        padding: 12px 14px;
-
-        justify-content: flex-start;
-    }
-
-    .main-nav a::after {
-        display: none;
-    }
-
-    .main-nav a:hover {
-        transform: translateX(4px);
+    .site-footer {
+        padding-top: 55px;
     }
 
     .footer-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+            1fr 1fr;
 
-        gap: 35px;
+        gap: 40px;
+    }
+
+    .footer-brand {
+        max-width: 100%;
+    }
+
+    .footer-description {
+        max-width: 360px;
     }
 
 }
@@ -691,28 +891,16 @@ main {
 
 @media (max-width: 600px) {
 
-    .nav-wrap {
-        min-height: 68px;
-    }
-
-    .brand img {
-        width: 145px;
-        max-height: 50px;
-    }
-
-    .menu-toggle {
-        width: 40px;
-        height: 40px;
-    }
-
-    .main-nav {
-        top: 68px;
+    .site-footer {
+        padding-top: 48px;
     }
 
     .footer-grid {
         grid-template-columns: 1fr;
 
-        gap: 30px;
+        gap: 32px;
+
+        padding-bottom: 35px;
     }
 
     .footer-brand {
@@ -723,212 +911,269 @@ main {
         width: 165px;
     }
 
-    .site-footer {
-        padding-top: 45px;
+    .footer-contact-item {
+        width: 100%;
+    }
+
+    .footer-contact-item a {
+        font-size: 13px;
+        word-break: break-word;
+    }
+
+    .footer-bottom {
+        padding: 18px 10px;
     }
 
 }
 
 
 /* =========================================================
-   MENU ANIMATION
-========================================================= */
-
-@keyframes menuSlide {
-
-    from {
-        opacity: 0;
-        transform: translateY(-8px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-}
-
-
-/* =========================================================
-   ACCESSIBILITY
+   REDUCED MOTION
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+    .site-footer::before {
+        animation: none;
+    }
+
+    .footer-logo-box,
+    .footer-column > a,
+    .footer-contact-item a {
+        transition: none;
     }
 
 }
-</style>
-</head>
-<body>
 
-<header class="site-header">
-    <div class="container nav-wrap">
-        <a href="{% url 'academy:home' %}" class="brand">
-            <img src="{% static 'academy/images/logo.png' %}" alt="AlphaStack Academy">
-        </a>
+</style> 
+</head> 
 
-        <button class="menu-toggle" aria-label="Open menu">☰</button>
+<body> 
+ 
+<header class="site-header"> 
 
-        <nav class="main-nav">
-            <a href="{% url 'academy:home' %}">Home</a>
-            <a href="{% url 'academy:about' %}">About Us</a>
-            <a href="{% url 'academy:courses' %}">Courses</a>
-            <!--<a href="{% url 'academy:events' %}">Events</a>-->
-            <a href="{% url 'academy:benefits' %}">Benefits</a>
-            <a href="{% url 'academy:contact' %}">Contact Us</a>
-        </nav>
-    </div>
-</header>
+    <div class="container nav-wrap"> 
 
-<main>
+        <a href="{% url 'academy:home' %}" class="brand"> 
+
+            <img 
+                src="{% static 'academy/images/logo.png' %}" 
+                alt="AlphaStack Academy"
+            > 
+
+        </a> 
+ 
+        <button class="menu-toggle" aria-label="Open menu">
+            ☰
+        </button> 
+ 
+        <nav class="main-nav"> 
+
+            <a href="{% url 'academy:home' %}">
+                Home
+            </a> 
+
+            <a href="{% url 'academy:about' %}">
+                About Us
+            </a> 
+
+            <a href="{% url 'academy:courses' %}">
+                Courses
+            </a> 
+
+            <!--<a href="{% url 'academy:events' %}">Events</a>--> 
+
+            <a href="{% url 'academy:benefits' %}">
+                Benefits
+            </a> 
+
+            <a href="{% url 'academy:contact' %}">
+                Contact Us
+            </a> 
+
+        </nav> 
+
+    </div> 
+
+</header> 
+ 
+<main> 
+
     {% block content %}{% endblock %}
-</main>
 
-<footer class="site-footer">
+</main> 
 
-    <div class="container">
 
-        <div class="footer-grid">
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
-            <!-- BRAND -->
-            <div class="footer-brand">
+<footer class="site-footer"> 
 
-                <a href="{% url 'academy:home' %}" class="footer-logo-box">
-                    <img
-                        src="{% static 'academy/images/logo.png' %}"
+    <div class="container"> 
+
+        <div class="footer-grid"> 
+
+
+            <!-- =================================================
+                 BRAND
+            ================================================== -->
+
+            <div class="footer-brand"> 
+
+                <a 
+                    href="{% url 'academy:home' %}" 
+                    class="footer-logo-box"
+                > 
+
+                    <img 
+                        src="{% static 'academy/images/logo.png' %}" 
                         alt="AlphaStack Academy"
-                    >
-                </a>
+                    > 
+
+                </a> 
 
                 <p class="footer-tagline">
                     Learn. Build. Grow.
-                </p>
+                </p> 
 
-                <p class="footer-description">
-                    Practical and affordable online programming
-                    education designed to help students build
+                <p class="footer-description"> 
+                    Practical and affordable online programming 
+                    education designed to help students build 
                     strong technical skills.
-                </p>
+                </p> 
 
-            </div>
-
-
-            <!-- QUICK LINKS -->
-            <div class="footer-column">
-
-                <h4>Quick Links</h4>
-
-                <a href="{% url 'academy:home' %}">
-                    <span>→</span> Home
-                </a>
-
-                <a href="{% url 'academy:about' %}">
-                    <span>→</span> About Us
-                </a>
-
-                <a href="{% url 'academy:courses' %}">
-                    <span>→</span> Courses
-                </a>
-
-                <a href="{% url 'academy:benefits' %}">
-                    <span>→</span> Benefits
-                </a>
-
-                <a href="{% url 'academy:contact' %}">
-                    <span>→</span> Contact Us
-                </a>
-
-            </div>
+            </div> 
 
 
-            <!-- COURSES -->
-            <div class="footer-column">
+            <!-- =================================================
+                 QUICK LINKS
+            ================================================== -->
 
-                <h4>Our Courses</h4>
+            <div class="footer-column"> 
 
-                <a href="{% url 'academy:java' %}">
-                     Java Programming
-                </a>
+                <h4>
+                    Quick Links
+                </h4> 
 
-                <a href="{% url 'academy:python' %}">
-                     Python Programming
-                </a>
+                <a href="{% url 'academy:home' %}"> 
+                    <span>→</span> Home 
+                </a> 
 
-                <a href="{% url 'academy:python_fullstack' %}">
-                     Full Stack Development
-                </a>
-            </div>
+                <a href="{% url 'academy:about' %}"> 
+                    <span>→</span> About Us 
+                </a> 
 
+                <a href="{% url 'academy:courses' %}"> 
+                    <span>→</span> Courses 
+                </a> 
+
+                <a href="{% url 'academy:benefits' %}"> 
+                    <span>→</span> Benefits 
+                </a> 
+
+                <a href="{% url 'academy:contact' %}"> 
+                    <span>→</span> Contact Us 
+                </a> 
+
+            </div> 
+
+
+            <!-- =================================================
+                 COURSES
+            ================================================== -->
+
+            <div class="footer-column"> 
+
+                <h4>
+                    Our Courses
+                </h4> 
+
+                <a href="{% url 'academy:java' %}"> 
+                    Java Programming 
+                </a> 
+
+                <a href="{% url 'academy:python' %}"> 
+                    Python Programming 
+                </a> 
+
+                <a href="{% url 'academy:python_fullstack' %}"> 
+                    Full Stack Development 
+                </a> 
+
+            </div> 
+
+
+            <!-- =================================================
+                 GET IN TOUCH
+            ================================================== -->
 
             <!-- CONTACT -->
-            <div class="footer-column footer-contact">
 
-                <h4>Get In Touch</h4>
+<div class="footer-column footer-contact">
 
-                <div class="footer-contact-item">
+    <h4>Get In Touch</h4>
 
-                    <div class="footer-icon">
-                        📞
-                    </div>
+    <div class="footer-contact-item">
 
-                    <div>
-                        <small>Phone</small>
-                        <a href="tel:+919629984587">
-                            +91 9629984587
-                        </a>
-                    </div>
+        <div>
+            <small>Phone</small>
 
-                </div>
-
-
-                <div class="footer-contact-item">
-
-                    <div class="footer-icon">
-                        ✉️
-                    </div>
-
-                    <div>
-                        <small>Email</small>
-                        <a href="mailto:alphastackacademy@gmail.com">
-                            contact@alphastackacademy.in
-                        </a>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        
-        <!-- BOTTOM -->
-
-        <div class="footer-bottom">
-
-            <p style="text-align: center;">
-    © 2026 <strong>AlphaStack Academy</strong>.
-    All Rights Reserved.
-</p>
+            <a href="tel:+919629984587">
+                +91 9629984587
+            </a>
         </div>
 
     </div>
 
-</footer>
-<script>
-    const toggle = document.querySelector(".menu-toggle");
-    const nav = document.querySelector(".main-nav");
-    if (toggle) {
-        toggle.addEventListener("click", () => nav.classList.toggle("show"));
-    }
-</script>
-</body>
+
+    <div class="footer-contact-item">
+
+        <div>
+            <small>Email</small>
+
+            <a href="mailto:alphastackacademy@gmail.com">
+                contact@alphastackacademy.in
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+        <!-- =================================================
+             FOOTER BOTTOM
+        ================================================== -->
+
+        <div class="footer-bottom"> 
+
+            <p> 
+                © 2026 
+                <strong>AlphaStack Academy</strong>.
+                All Rights Reserved.
+            </p> 
+
+        </div> 
+
+    </div> 
+
+</footer> 
+
+
+<script> 
+
+    const toggle = document.querySelector(".menu-toggle"); 
+    const nav = document.querySelector(".main-nav"); 
+
+    if (toggle) { 
+
+        toggle.addEventListener("click", () => {
+            nav.classList.toggle("show");
+        }); 
+
+    } 
+
+</script> 
+
+</body> 
 </html>
