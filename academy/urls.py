@@ -14,3 +14,5 @@ urlpatterns = [
     path("contact/", views.contact, name="contact"),
     path("python-full-stack/", views.python_fullstack, name="python_fullstack"),
 ]
+
+
